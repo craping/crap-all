@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.crap</groupId>
-  <artifactId>crap-all</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
+	<groupId>org.crap</groupId>
+	<artifactId>crap-all</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
 
-  <distributionManagement>
-    <site>
-      <id>website</id>
-      <url>scp://webhost.company.com/www/website</url>
-    </site>
-  </distributionManagement>
+	<distributionManagement>
+		<site>
+			<id>website</id>
+			<url>scp://webhost.company.com/www/website</url>
+		</site>
+	</distributionManagement>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <modules>
-    <module>org.crap.jrain</module>
-    <module>org.crap.wxbot</module>
-    <module>org.crap.data</module>
-    <module>crap-data</module>
-  </modules>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- spring版本 -->
+		<spring.version>5.0.1.RELEASE</spring.version>
+		<!-- mybatis版本 -->
+		<mybatis.version>3.2.4</mybatis.version>
+		<!-- log4j日志文件管理包版 -->
+		<slf4j.version>1.7.2</slf4j.version>
+		<aspectj.version>1.5.4</aspectj.version>
+		<jackson-core-version>2.9.2</jackson-core-version>
+		<log4j.version>2.6.2</log4j.version>
+	</properties>
+	<modules>
+		<module>org.crap.jrain</module>
+		<module>org.crap.wxbot</module>
+		<module>org.crap.data</module>
+		<module>crap-data</module>
+	</modules>
 </project>

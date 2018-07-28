@@ -18,19 +18,7 @@
 			<url>scp://webhost.company.com/www/website</url>
 		</site>
 	</distributionManagement>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- spring版本 -->
-		<spring.version>4.1.6.RELEASE</spring.version>
-		<!-- mybatis版本 -->
-		<mybatis.version>3.2.4</mybatis.version>
-		<!-- log4j日志文件管理包版 -->
-		<slf4j.version>1.7.2</slf4j.version>
-		<log4j.version>1.2.9</log4j.version>
-		<aspectj.version>1.5.4</aspectj.version>
-		<jackson-core-version>2.9.2</jackson-core-version>
-	</properties>
+	
 	<modules>
 		<module>org.crap.data.dao</module>
 	</modules>
