@@ -47,7 +47,7 @@ public abstract class NettyRender extends AbstractRender<FullHttpRequest, Channe
 		if(!close && !forceClose){
 			response.headers().add(HttpHeaderNames.CONTENT_LENGTH, String.valueOf(response.content().readableBytes()));
 		}
-		ChannelFuture future = channel.write(response);
+		ChannelFuture future = channel.writeAndFlush(response);
 		if(close || forceClose){
 			future.addListener(ChannelFutureListener.CLOSE);
 		}
