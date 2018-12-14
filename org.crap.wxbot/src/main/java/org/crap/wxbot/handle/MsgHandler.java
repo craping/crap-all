@@ -6,18 +6,26 @@ import java.io.StringReader;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
+import org.crap.wxbot.KeyWord;
 import org.crap.wxbot.bean.PayInfo;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.zhouyafeng.itchat4j.api.MessageTools;
@@ -26,6 +34,8 @@ import cn.zhouyafeng.itchat4j.beans.BaseMsg;
 import cn.zhouyafeng.itchat4j.beans.RecommendInfo;
 import cn.zhouyafeng.itchat4j.core.Core;
 import cn.zhouyafeng.itchat4j.face.IMsgHandlerFace;
+import cn.zhouyafeng.itchat4j.utils.Config;
+import cn.zhouyafeng.itchat4j.utils.MyHttpClient;
 import cn.zhouyafeng.itchat4j.utils.enums.MsgTypeEnum;
 import cn.zhouyafeng.itchat4j.utils.tools.DownloadTools;
 
@@ -40,29 +50,68 @@ import cn.zhouyafeng.itchat4j.utils.tools.DownloadTools;
 public class MsgHandler implements IMsgHandlerFace {
 	Logger LOG = Logger.getLogger(MsgHandler.class);
 
+	Logger logger = Logger.getLogger("TulingRobot");
+	MyHttpClient myHttpClient = Core.getInstance().getMyHttpClient();
+	String url = "http://openapi.tuling123.com/openapi/api/v2";
+	String apiKey = "69add9e3d03d4194b2a2e1d22ca5c8b8";
+	
 	@Override
 	public String textMsgHandle(BaseMsg msg) {
-		// String docFilePath = "E:/itchat4j/pic/1.jpg"; // 这里是需要发送的文件的路径
-		if (!msg.isGroupMsg()) { // 群消息不处理
-			// String userId = msg.getString("FromUserName");
-			// MessageTools.sendFileMsgByUserId(userId, docFilePath); // 发送文件
-			// MessageTools.sendPicMsgByUserId(userId, docFilePath);
-			String text = msg.getText(); // 发送文本消息，也可调用MessageTools.sendFileMsgByUserId(userId,text);
-			LOG.info(text);
+		String text = msg.getText();
+		LOG.info(text);
+		if (!msg.isGroupMsg()) {// 个人消息处理
+			
 			if (text.equals("111")) {
 				WechatTools.logout();
 			}
+			
+			//刷新keyword
 			if (text.equals("222")) {
-				WechatTools.remarkNameByNickName("yaphone", "Hello");
+				KeyWord.load();
+				return "配置更新成功";
 			}
 			if (text.equals("333")) { // 测试群列表
 				System.out.print(WechatTools.getGroupNickNameList());
 				System.out.print(WechatTools.getGroupIdList());
 				System.out.print(Core.getInstance().getGroupMemeberMap());
 			}
-			return text;
+			
+			Set<Object> keys = KeyWord.KEYWORD.keySet();
+			for (Object object : keys) {
+				String key = object.toString();
+				if(text.contains(key))
+					return KeyWord.KEYWORD.getProperty(key);
+			}
+		} else {// 群消息处理
+			Set<Object> keys = KeyWord.KEYWORD_GROUP.keySet();
+			for (Object object : keys) {
+				String key = object.toString();
+				if(text.contains(key))
+					return KeyWord.KEYWORD_GROUP.getProperty(key);
+			}
 		}
-		return null;
+		
+		String result = "";
+		String paramStr = "{\"reqType\":0,\"perception\": {\"inputText\": {\"text\": \""+text+"\"}},\"userInfo\": {\"apiKey\": \"69add9e3d03d4194b2a2e1d22ca5c8b8\",\"userId\": \"359415\"}}";
+		try {
+			HttpEntity entity = myHttpClient.doPost(url, paramStr);
+			result = EntityUtils.toString(entity, "UTF-8");
+			JSONObject obj = JSON.parseObject(result);
+			
+			if(obj.containsKey("results")) {
+				JSONArray results = obj.getJSONArray("results");
+				for (int i = 0; i < results.size(); i++) {
+					JSONObject r = results.getJSONObject(i);
+					if("text".equals(r.getString("resultType")))
+						result = r.getJSONObject("values").getString("text");
+				} 
+			} else {
+				result = "处理有误";
+			}
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+		return result;
 	}
 
 	@Override
@@ -71,7 +120,7 @@ public class MsgHandler implements IMsgHandlerFace {
 			return null;
 		
 		String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());// 这里使用收到图片的时间作为文件名
-		String picPath = "E://itchat4j/pic" + File.separator + fileName + ".jpg"; // 调用此方法来保存图片
+		String picPath = Config.picDir+"/pic" + File.separator + fileName + ".jpg"; // 调用此方法来保存图片
 		DownloadTools.getDownloadFn(msg, MsgTypeEnum.PIC.getType(), picPath); // 保存图片的路径
 		return "图片保存成功";
 	}
@@ -82,7 +131,7 @@ public class MsgHandler implements IMsgHandlerFace {
 			return null;
 		
 		String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
-		String voicePath = "E://itchat4j/voice" + File.separator + fileName + ".mp3";
+		String voicePath = Config.picDir+"/voice" + File.separator + fileName + ".mp3";
 		DownloadTools.getDownloadFn(msg, MsgTypeEnum.VOICE.getType(), voicePath);
 		return "声音保存成功";
 	}
@@ -93,7 +142,7 @@ public class MsgHandler implements IMsgHandlerFace {
 			return null;
 		
 		String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
-		String viedoPath = "E://itchat4j/viedo" + File.separator + fileName + ".mp4";
+		String viedoPath = Config.picDir+"/viedo" + File.separator + fileName + ".mp4";
 		DownloadTools.getDownloadFn(msg, MsgTypeEnum.VIEDO.getType(), viedoPath);
 		return "视频保存成功";
 	}
@@ -129,7 +178,7 @@ public class MsgHandler implements IMsgHandlerFace {
 			return null;
 		
 		String fileName = msg.getFileName();
-		String filePath = "E://itchat4j/file" + File.separator + fileName; // 这里是需要保存收到的文件路径，文件可以是任何格式如PDF，WORD，EXCEL等。
+		String filePath = Config.picDir+"/file" + File.separator + fileName; // 这里是需要保存收到的文件路径，文件可以是任何格式如PDF，WORD，EXCEL等。
 		DownloadTools.getDownloadFn(msg, MsgTypeEnum.MEDIA.getType(), filePath);
 		return "文件" + fileName + "保存成功";
 	}
