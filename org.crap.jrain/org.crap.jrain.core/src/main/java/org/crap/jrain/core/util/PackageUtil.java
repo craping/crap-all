@@ -54,7 +54,7 @@ public class PackageUtil {
 									document.append("参数:</br>");
 									for (Parameter param : barScreen.params()){
 										if(MultiParam.class.isAssignableFrom(param.type())){
-											MultiParam<?> multiParam = (MultiParam<?>) param.type().newInstance();
+											MultiParam<?> multiParam = (MultiParam<?>) param.type().getDeclaredConstructor().newInstance();
 											for (Param<?> aParam : multiParam.getParams()) {
 												String enums = aParam.getEnums() != null && aParam.getEnums().length >0?
 														(EnumParam.class.isAssignableFrom(aParam.getClass())?"取值范围:["+aParam.toString()+"]":"取值范围:"+Arrays.toString(aParam.getEnums())):"";
@@ -65,7 +65,7 @@ public class PackageUtil {
 												.append("</span></br>");
 											}
 										}else{
-											Param<?> aParam = (Param<?>) param.type().newInstance();
+											Param<?> aParam = (Param<?>) param.type().getDeclaredConstructor().newInstance();
 											String enums = aParam.getEnums() != null && aParam.getEnums().length >0?
 													(EnumParam.class.isAssignableFrom(aParam.getClass())?"取值范围:["+aParam.toString()+"]":"取值范围:"+Arrays.toString(aParam.getEnums())):"";
 											
@@ -109,6 +109,7 @@ public class PackageUtil {
 	 * @return 类的完整名称
 	 * @throws URISyntaxException 
 	 */
+	@SuppressWarnings("unused")
 	public static List<String> getClassName(String packageName, boolean childPackage) throws URISyntaxException {
 		List<String> fileNames = null;
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();

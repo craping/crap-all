@@ -27,11 +27,12 @@
 		<aspectj.version>1.5.4</aspectj.version>
 		<jackson-core-version>2.9.2</jackson-core-version>
 		<log4j.version>2.6.2</log4j.version>
+		<!-- asm版本 -->
+		<asm.version>7.0</asm.version>
 	</properties>
 	<modules>
 		<module>org.crap.jrain</module>
 		<module>org.crap.wxbot</module>
 		<module>org.crap.data</module>
-		<module>crap-data</module>
 	</modules>
 </project>

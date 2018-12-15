@@ -69,7 +69,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 		Param<?> aParam = null;
 		try {	
 			Class<? extends Param<?>> param = parameter.type();
-			aParam = param.newInstance();
+			aParam = param.getDeclaredConstructor().newInstance();
 			
 			Field[] fields = ClassUtil.getDeclaredFields(param);
 			AccessibleObject.setAccessible(fields, true);
@@ -94,7 +94,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 			aParam.checkRangeLegitimate(mapping);
 			aParam.setMapping(mapping);
 			
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 			log.error("error", e);
 		}

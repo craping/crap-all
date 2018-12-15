@@ -32,10 +32,8 @@ public abstract class AbstractObjectRowMapper<T> implements RowMapper<T> {
 		T entity = null;
 		
 		try {
-			entity = mappedClass.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+			entity = mappedClass.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
 		

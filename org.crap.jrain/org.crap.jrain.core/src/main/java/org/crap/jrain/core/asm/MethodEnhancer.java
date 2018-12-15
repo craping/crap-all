@@ -27,7 +27,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
 public class MethodEnhancer implements Opcodes {
-
+	
 	private final Logger log = LogManager.getLogger(MethodEnhancer.class);
 	
 	/**
@@ -100,9 +100,11 @@ public class MethodEnhancer implements Opcodes {
 			FileUtil.createDirs(dir, true);
 			FileUtil.createFile(classData, path);
 			
+			
 			URL cp = new File(url).toURI().toURL();
-			URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-			URL[] urls = classLoader.getURLs();
+			URLClassLoader loader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+			URL[] urls = loader.getURLs();
+			
 			boolean hasClassPath = false;
 			
 			for (URL u : urls) {
@@ -114,10 +116,9 @@ public class MethodEnhancer implements Opcodes {
 			if(!hasClassPath) {
 				Method add = URLClassLoader.class.getDeclaredMethod("addURL", new Class[] {URL.class});
 				add.setAccessible(true);
-				add.invoke(classLoader, new Object[] {cp});
+				add.invoke(loader, new Object[] {cp});
 			}
-			
-			return Class.forName(secureClassName).newInstance();
+			return Class.forName(secureClassName).getDeclaredConstructor().newInstance();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			log.error("load [" + secureClassName + "] error", ex);
@@ -150,7 +151,7 @@ public class MethodEnhancer implements Opcodes {
 		MethodVisitor mv;
 		AnnotationVisitor av;
 		
-		cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, newcls, null, cls, null);
+		cw.visit(V1_8, ACC_PUBLIC + ACC_SUPER, newcls, null, cls, null);
 		cw.visitSource(newcls.substring(newcls.lastIndexOf("/")+1, newcls.length()) + ".java", null);
 		{ // 构造方法，每个类必须
 			mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", signature, exceptions);// 方法名称

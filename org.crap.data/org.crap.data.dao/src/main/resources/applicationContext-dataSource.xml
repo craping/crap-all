@@ -25,9 +25,16 @@
         http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
 	<context:property-placeholder location="classpath*:*-config.properties" />
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="properties">
+	    	<props>
+	            <prop key="mapperPackage">org.crap.data.dao.sql.service</prop>
+	        </props>
+	    </property>
+	</bean>
 	
 	<!-- 自动扫描所有注解该路径 -->
-	<context:component-scan base-package="org.crap.collect.dao" />
+	<context:component-scan base-package="org.crap.data.dao" />
 		
 	<!-- DataSource Start -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  

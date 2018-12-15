@@ -12,6 +12,7 @@ import org.crap.data.dao.sql.orm.IMapper;
 import org.crap.data.dao.sql.service.Mapper;
 import org.crap.jrain.core.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -35,14 +36,16 @@ public class MapperImpl implements IMapper {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	private final static String mapperPackage = "org.crap.data.dao.sql.service.";
+
+	@Value("${mapperPackage}")
+	private String mapperPackage;
 
 	/**
 	 * entity execute methods
 	 */
 	@SuppressWarnings("unchecked")
 	public Serializable save(Object paramObject) {
-		String mapperName = mapperPackage + paramObject.getClass().getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + paramObject.getClass().getSimpleName() + "Mapper";
 		Class<Mapper<Object>> clazz = null;
 		try {
 			clazz = (Class<Mapper<Object>>) Class.forName(mapperName);
@@ -57,7 +60,7 @@ public class MapperImpl implements IMapper {
 	@SuppressWarnings("unchecked")
 	public Serializable[] save(Object... paramObjects) {
 		Serializable[] sArray = new Serializable[paramObjects.length];
-		String mapperName = mapperPackage + paramObjects[0].getClass().getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + paramObjects[0].getClass().getSimpleName() + "Mapper";
 		
 		Class<Mapper<Object>> clazz = null;
 		try {
@@ -103,7 +106,7 @@ public class MapperImpl implements IMapper {
 
 	@SuppressWarnings("unchecked")
 	public void update(Object paramObject) {
-		String mapperName = mapperPackage + paramObject.getClass().getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + paramObject.getClass().getSimpleName() + "Mapper";
 		Class<Mapper<Object>> clazz = null;
 		try {
 			clazz = (Class<Mapper<Object>>) Class.forName(mapperName);
@@ -117,7 +120,7 @@ public class MapperImpl implements IMapper {
 
 	@SuppressWarnings("unchecked")
 	public void update(Object... paramObjects) {
-		String mapperName = mapperPackage + paramObjects[0].getClass().getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + paramObjects[0].getClass().getSimpleName() + "Mapper";
 
 		Class<Mapper<Object>> clazz = null;
 		try {
@@ -139,7 +142,7 @@ public class MapperImpl implements IMapper {
 
 	@SuppressWarnings("unchecked")
 	public void remove(Class<?> entity, Object paramObject) {
-		String mapperName = mapperPackage + entity.getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + entity.getSimpleName() + "Mapper";
 		Class<Mapper<Object>> clazz = null;
 		try {
 			clazz = (Class<Mapper<Object>>) Class.forName(mapperName);
@@ -154,7 +157,7 @@ public class MapperImpl implements IMapper {
 
 	@SuppressWarnings("unchecked")
 	public void remove(Class<?> entity, Object... paramObjects) {
-		String mapperName = mapperPackage + entity.getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + entity.getSimpleName() + "Mapper";
 		Class<Mapper<Object>> clazz = null;
 		try {
 			clazz = (Class<Mapper<Object>>) Class.forName(mapperName);
@@ -188,7 +191,7 @@ public class MapperImpl implements IMapper {
 	@SuppressWarnings("unchecked")
 	public <T> T get(Class<T> paramClass, Serializable paramSerializable) {
 
-		String mapperName = mapperPackage + paramClass.getSimpleName() + "Mapper";
+		String mapperName = mapperPackage + "." + paramClass.getSimpleName() + "Mapper";
 
 		Class<Mapper<Object>> clazz = null;
 		try {

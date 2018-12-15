@@ -76,14 +76,14 @@ public class ClassUtil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        cr.accept(new ClassVisitor(Opcodes.ASM4) {
+        cr.accept(new ClassVisitor(Opcodes.ASM7) {
             @Override
             public MethodVisitor visitMethod(final int access, final String name, final String desc, final String signature, final String[] exceptions) {
                 final Type[] args = Type.getArgumentTypes(desc);
                 // 方法名相同并且参数个数以及类型相同
 				if (name.equals(m.getName()) && sameType(args, m.getParameterTypes())) {
 					MethodVisitor v = super.visitMethod(access, name, desc, signature, exceptions);
-	                return new MethodVisitor(Opcodes.ASM4, v) {
+	                return new MethodVisitor(Opcodes.ASM7, v) {
 	                    @Override
 	                    public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index) {
 	                        int i = index - 1;
@@ -127,14 +127,14 @@ public class ClassUtil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        cr.accept(new ClassVisitor(Opcodes.ASM4) {
+        cr.accept(new ClassVisitor(Opcodes.ASM7) {
 	        @Override
 	        public MethodVisitor visitMethod(final int access, final String name, final String desc, final String signature, final String[] exceptions) {
 	            final Type[] args = Type.getArgumentTypes(desc);
 	            // 方法名相同并且参数个数以及类型相同
 	            if (name.equals(m.getName()) && sameType(args, m.getParameterTypes())) {
 					MethodVisitor v = super.visitMethod(access, name, desc, signature, exceptions);
-	                return new MethodVisitor(Opcodes.ASM4, v) {
+	                return new MethodVisitor(Opcodes.ASM7, v) {
 	                    @Override
 	                    public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index) {
 	                        int i = index - 1;
