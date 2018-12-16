@@ -31,7 +31,11 @@ public class DataPumpAdapter extends PumpAdapter {
 		Map<String, ASMPump<Map<?,?>>> pumpMap = new HashMap<String, ASMPump<Map<?,?>>>();
 		
 		Pump pump = clazz.getAnnotation(Pump.class);
-		String module = (pump==null||pump.value().equals(""))?clazz.getSimpleName():pump.value();
+		
+		if(pump == null)
+			return pumpMap;
+		
+		String module = pump.value().equals("")?clazz.getSimpleName():pump.value();
 		
 		Method[] methods = clazz.getDeclaredMethods();
 

@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import org.crap.jrain.core.Config;
 import org.crap.jrain.core.asm.annotation.Pump;
 import org.crap.jrain.core.asm.handler.ASMPump;
+import org.crap.jrain.core.validate.exception.NoSuchServiceDefinitionException;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -98,7 +100,11 @@ public class SpringBoot extends Boot {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public ASMPump<Map<?,?>> getHandler(String mapping) {
-		return context.getBean(mapping, ASMPump.class);
+	public ASMPump<Map<?,?>> getHandler(String mapping) throws NoSuchServiceDefinitionException {
+		try {
+			return context.getBean(mapping, ASMPump.class);
+		} catch (NoSuchBeanDefinitionException e) {
+			throw new NoSuchServiceDefinitionException(mapping);
+		}
 	}
 }

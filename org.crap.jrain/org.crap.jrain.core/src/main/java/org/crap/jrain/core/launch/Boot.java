@@ -12,12 +12,14 @@ import org.crap.jrain.core.Config;
 import org.crap.jrain.core.Resource;
 import org.crap.jrain.core.asm.adapter.DataPumpAdapter;
 import org.crap.jrain.core.asm.adapter.PumpAdapter;
+import org.crap.jrain.core.asm.annotation.Pipe;
 import org.crap.jrain.core.asm.annotation.Pump;
 import org.crap.jrain.core.asm.handler.ASMPump;
 import org.crap.jrain.core.util.PackageUtil;
 import org.crap.jrain.core.util.StringUtil;
 import org.crap.jrain.core.validate.DataBarScreen;
 import org.crap.jrain.core.validate.annotation.BarScreen;
+import org.crap.jrain.core.validate.exception.NoSuchServiceDefinitionException;
 import org.crap.jrain.core.validate.security.param.EncryptDataParam;
 import org.crap.jrain.core.validate.security.param.EncryptFlagParam;
 import org.crap.jrain.core.validate.security.param.EncryptSourceParam;
@@ -99,7 +101,7 @@ public abstract class Boot {
 	protected void launch(String packge) {
 		try {
 			scanPump(packge);
-			scanBarScreen();
+//			scanBarScreen();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 			log.error("scan error [@ServerMethod] from path:[{}]", packge);
@@ -150,9 +152,44 @@ public abstract class Boot {
 			if(!ASMPump.class.isAssignableFrom(serverClass) || !serverClass.isAnnotationPresent(Pump.class)){
 				continue;
 			}
+			
 			SERVER_MAP.putAll(adapter.resolve(serverClass));
+			scanBarScreen(serverClass);
 		}
 		log.info("scan [@Pump] complete.");
+	}
+	
+	/**  
+	* @Title: scanBarScreen  
+	* @Description: 扫描BarScreen校验注解服务  
+	* @param     参数  
+	* @return void    返回类型  
+	* @throws  
+	*/  
+	    
+	protected void scanBarScreen(Class<?> serverClass) {
+		Pump pump = serverClass.getAnnotation(Pump.class);
+		
+		if(pump == null)
+			return;
+		
+		Method[] methods = serverClass.getDeclaredMethods();
+		String module = pump.value().equals("")?serverClass.getSimpleName():pump.value();
+		for (Method met : methods) {
+			Pipe pipe = met.getAnnotation(Pipe.class);
+			if(pipe == null)
+				continue;
+			
+			String method = pipe.value().equals("")?met.getName():pipe.value();
+
+			String mapping = (module+"$"+method).replace("/", "$").replace("\\", "$");
+			
+			BarScreen barScreen = met.getAnnotation(BarScreen.class);
+			if(barScreen != null) {
+				DataBarScreen.registBarScreen(mapping, barScreen);
+				log.info("scan [@BarScreen] from path:[{}]", mapping);
+			}
+		}
 	}
 	
 	  
@@ -163,7 +200,7 @@ public abstract class Boot {
 	* @return void    返回类型  
 	* @throws  
 	*/  
-	    
+	@Deprecated
 	protected void scanBarScreen() {
 		for (Map.Entry<String, ASMPump<Map<?,?>>> entry : SERVER_MAP.entrySet()) {
 			try {
@@ -187,7 +224,7 @@ public abstract class Boot {
 	 * 通过mapping 获取对应的可执行Handler
 	 * 
 	 */
-	public abstract ASMPump<Map<?,?>> getHandler(String mapping);
+	public abstract ASMPump<Map<?,?>> getHandler(String mapping) throws NoSuchServiceDefinitionException;
 
 
 	public Config getConfig() {

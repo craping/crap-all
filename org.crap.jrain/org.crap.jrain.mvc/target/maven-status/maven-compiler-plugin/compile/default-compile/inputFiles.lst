@@ -1,0 +1,14 @@
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\AbstractRender.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\Render.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\decoder\URIDecoder.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\render\NettyXMLRender.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\http\HttpTreatment.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\render\NettyHTMLRender.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\render\NettyJSONRender.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\Treatment.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\disruptor\RequestEvent.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\render\NettyImageRender.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\NettyTreatment.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\render\NettyRender.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\netty\ServerDispatcher.java
+C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.mvc\src\main\java\org\crap\jrain\mvc\socket\SocketTreatment.java

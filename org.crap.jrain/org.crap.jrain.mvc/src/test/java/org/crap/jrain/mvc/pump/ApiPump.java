@@ -1,7 +1,5 @@
 package org.crap.jrain.mvc.pump;
 
-import java.util.Map;
-
 import org.crap.jrain.core.asm.annotation.Pipe;
 import org.crap.jrain.core.asm.annotation.Pump;
 import org.crap.jrain.core.asm.handler.DataPump;
@@ -18,12 +16,14 @@ import org.crap.jrain.core.validate.support.param.NumberParam;
 import org.crap.jrain.mvc.param.Constant;
 import org.crap.jrain.mvc.param.DataStatusEParam;
 
+import net.sf.json.JSONObject;
+
 @Pump("api")
-public class ApiPump extends DataPump<Map<String, Object>> {
+public class ApiPump extends DataPump<JSONObject> {
 	
 	@Pipe("apiDocument")
 	@BarScreen(desc="API文档")
-	public Errcode api (Map<String, Object> params) {
+	public Errcode api (JSONObject params) {
 		try {
 			String info = PackageUtil.apiResolve("org.crap.jrain.mvc.pump", "http://127.0.0.1:8080");
 			return new DataResult(Errors.OK, new Data(info));
@@ -44,7 +44,7 @@ public class ApiPump extends DataPump<Map<String, Object>> {
 			@Parameter(value="includeSub", type=DataStatusEParam.class, defaultValue=Constant.System.DataStatus.NR, desc="包含下级")
 		}
 	)
-	public Errcode method (Map<String, Object> params) {
+	public Errcode method (JSONObject params) {
 		return new Result(Errors.OK);
 	}
 }

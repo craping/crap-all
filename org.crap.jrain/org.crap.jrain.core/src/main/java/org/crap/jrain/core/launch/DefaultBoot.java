@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.crap.jrain.core.Config;
 import org.crap.jrain.core.asm.handler.ASMPump;
+import org.crap.jrain.core.validate.exception.NoSuchServiceDefinitionException;
 
   
 /**  
@@ -20,7 +21,14 @@ public class DefaultBoot extends Boot {
 		super(config);
 	}
 
-	public ASMPump<Map<?,?>> getHandler(String mapping) {
-		return SERVER_MAP.get(mapping);
+	@Override
+	public ASMPump<Map<?,?>> getHandler(String mapping) throws NoSuchServiceDefinitionException {
+		
+		ASMPump<Map<?,?>> pump = SERVER_MAP.get(mapping);
+		
+		if(pump == null)
+			throw new NoSuchServiceDefinitionException(mapping);
+		
+		return pump;
 	}
 }

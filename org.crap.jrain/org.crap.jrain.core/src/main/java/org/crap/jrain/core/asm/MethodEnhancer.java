@@ -191,7 +191,7 @@ public class MethodEnhancer implements Opcodes {
 			mv.visitCode();
 			Label l0 = new Label();
 			mv.visitLabel(l0);
-			mv.visitLineNumber(10, l0);
+			mv.visitLineNumber(11, l0);
 			mv.visitVarInsn(ALOAD, 0);// 加载 this 对象
 			for (int i = 1; i <= inParams.size(); i++) {
 				mv.visitVarInsn(ALOAD, i);// 加载 num 参数
@@ -210,7 +210,23 @@ public class MethodEnhancer implements Opcodes {
 				i++;
 			}
 
-			mv.visitMaxs(3, 3);// 设置本地堆栈
+			mv.visitMaxs(2, 2);// 设置本地堆栈
+			mv.visitEnd();
+		}
+		if(!"Ljava/util/Map;".equals(inParamStr)){
+			mv = cw.visitMethod(ACC_PUBLIC + ACC_BRIDGE + ACC_SYNTHETIC, superMethodName, "(Ljava/util/Map;)"+outParam, null, null);
+			mv.visitCode();
+			Label l0 = new Label();
+			mv.visitLabel(l0);
+			mv.visitLineNumber(1, l0);
+			mv.visitVarInsn(ALOAD, 0);
+			for (int i = 1; i <= inParams.size(); i++) {
+				mv.visitVarInsn(ALOAD, i);// 加载 num 参数
+			}
+			mv.visitTypeInsn(CHECKCAST, inParamStr);
+			mv.visitMethodInsn(INVOKEVIRTUAL, newcls, superMethodName, "(" + inParamStr + ")" + outParam, false);
+			mv.visitInsn(ARETURN);
+			mv.visitMaxs(2, 2);
 			mv.visitEnd();
 		}
 		cw.visitEnd();

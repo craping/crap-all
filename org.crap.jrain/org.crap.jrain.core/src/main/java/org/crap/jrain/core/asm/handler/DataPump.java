@@ -20,5 +20,5 @@ public abstract class DataPump<T extends Map<?,?>> implements ASMPump<T> {
 	/**
 	 *  ASM reflect to custom method
 	 */
-	public Errcode execute (T params) {return null;};
+	public Errcode execute (T params) {System.out.println("DataPump"); return null;};
 }

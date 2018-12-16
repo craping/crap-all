@@ -15,6 +15,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.FullHttpRequest;
+import io.netty.util.ReferenceCountUtil;
 
   
 /**  
@@ -42,7 +43,12 @@ public class ServerDispatcher extends SimpleChannelInboundHandler<FullHttpReques
             disruptor.handleEventsWith((event, sequence, endOfBatch) -> {
             	try {
             		event.getTreatment().process(event.getMapping(), event.getRequest(), event.getResponse());
-                } finally {
+                } catch (Exception e) {
+                	e.printStackTrace();
+                	event.getResponse().close();
+				} finally {
+					if(event.getRequest().content().isReadable())
+						ReferenceCountUtil.release(event.getRequest());
                     event.clear();
                 }
     		});
@@ -52,6 +58,7 @@ public class ServerDispatcher extends SimpleChannelInboundHandler<FullHttpReques
     };
     
 	public ServerDispatcher(Treatment<FullHttpRequest, Channel> treatment) {
+		super(false);
 		this.treatment = treatment;
 	}
 	
@@ -96,7 +103,6 @@ public class ServerDispatcher extends SimpleChannelInboundHandler<FullHttpReques
         ctx.close();
     }
 	
-	  
 	/**  
 	* @Title: getRequestMapping  
 	* @Description: 从uri中解析出消息执行方法的映射mapping

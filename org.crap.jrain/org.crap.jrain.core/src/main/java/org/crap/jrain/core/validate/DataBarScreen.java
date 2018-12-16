@@ -18,18 +18,17 @@ import org.crap.jrain.core.util.ClassUtil;
 import org.crap.jrain.core.validate.annotation.Attribute;
 import org.crap.jrain.core.validate.annotation.BarScreen;
 import org.crap.jrain.core.validate.annotation.Parameter;
-import org.crap.jrain.core.validate.exception.NoSuchServiceDefinitionException;
 import org.crap.jrain.core.validate.exception.ParamAttrNotMatchException;
 import org.crap.jrain.core.validate.exception.ParamEmptyException;
 import org.crap.jrain.core.validate.exception.ParamFormatException;
 import org.crap.jrain.core.validate.exception.ParamIllegalRangeException;
 import org.crap.jrain.core.validate.exception.ParamRequiredException;
 import org.crap.jrain.core.validate.exception.ValidationException;
-import org.crap.jrain.core.validate.security.Security;
-import org.crap.jrain.core.validate.security.component.CryptoCipher;
 import org.crap.jrain.core.validate.security.Cipher;
 import org.crap.jrain.core.validate.security.DefaultKeyPairCollection;
 import org.crap.jrain.core.validate.security.KeyPairCollection;
+import org.crap.jrain.core.validate.security.Security;
+import org.crap.jrain.core.validate.security.component.CryptoCipher;
 import org.crap.jrain.core.validate.security.param.EncryptDataParam;
 import org.crap.jrain.core.validate.security.param.EncryptFlagParam;
 import org.crap.jrain.core.validate.security.param.EncryptSourceParam;
@@ -157,8 +156,10 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 		String mapping = String.valueOf(data[0]);
 		
 		BarScreenWrap wrap = vMap.get(mapping);
+		
 		if(wrap == null)
-			throw new NoSuchServiceDefinitionException(mapping);
+			return Errors.OK;
+		
 		if(wrap.isSecurity()){
 			paramObject = decrypt0(paramObject, wrap.getSecurityParams());
 		}
