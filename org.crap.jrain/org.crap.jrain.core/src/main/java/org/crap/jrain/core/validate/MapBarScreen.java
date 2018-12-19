@@ -45,5 +45,4 @@ public class MapBarScreen extends DataBarScreen<Map<String, Object>> {
 	public Map<String, Object> parseParams(String data) {
 		return StringUtil.decodeParams(data);
 	}
-
 }

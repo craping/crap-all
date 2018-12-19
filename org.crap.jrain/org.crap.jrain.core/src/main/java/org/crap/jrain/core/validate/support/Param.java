@@ -124,7 +124,7 @@ public abstract class Param<T> implements Validation<Object> {
 	 */
 	protected Errcode validateEnumsRange(Object param) throws ValidationException {
 		for (int i = 0; i < this.enums.length; i++) {
-			if(String.valueOf(param).equals(this.enums[i]))
+			if(this.enums[i].equals(String.valueOf(param)))
 				return Errors.OK;
 		}
 		throw new ParamOutOfEnumsRangeException(this);

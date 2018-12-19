@@ -49,7 +49,7 @@ public class JSONBarScreen extends DataBarScreen<JSONObject> {
 		}
 		return null;
 	}
-
+	
 	@Override
 	protected void setValue(JSONObject params, String key, Object value) {
 		if(key == null)

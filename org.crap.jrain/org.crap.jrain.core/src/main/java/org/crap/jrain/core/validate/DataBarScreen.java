@@ -29,9 +29,8 @@ import org.crap.jrain.core.validate.security.DefaultKeyPairCollection;
 import org.crap.jrain.core.validate.security.KeyPairCollection;
 import org.crap.jrain.core.validate.security.Security;
 import org.crap.jrain.core.validate.security.component.CryptoCipher;
-import org.crap.jrain.core.validate.security.param.EncryptDataParam;
-import org.crap.jrain.core.validate.security.param.EncryptFlagParam;
 import org.crap.jrain.core.validate.security.param.EncryptSourceParam;
+import org.crap.jrain.core.validate.security.param.SecurityParam;
 import org.crap.jrain.core.validate.support.BarScreenWrap;
 import org.crap.jrain.core.validate.support.Param;
 import org.crap.jrain.core.validate.support.param.MultiParam;
@@ -169,11 +168,11 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 		return errcode;
 	}
 	
-	public T decrypt0(T paramObject, Param<?>[] securityParams) throws ValidationException {
+	public T decrypt0(T paramObject, SecurityParam securityParams) throws ValidationException {
 		Cipher cipher = createCipher();
 		Security.setCipher(cipher);
 		
-		validateParams(paramObject, securityParams);
+		validateParams(paramObject, securityParams.getParams());
 		
 		return decrypt(cipher, paramObject, securityParams);
 	}
@@ -226,7 +225,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 		pumpWrap.setSecurity(barScreen.security());
 		pumpWrap.setDesc(barScreen.desc());
 		if(pumpWrap.isSecurity()){
-			pumpWrap.setSecurityParams(new Param<?>[]{new EncryptDataParam(), new EncryptSourceParam(), new EncryptFlagParam()});
+			pumpWrap.setSecurityParams(new SecurityParam());
 		}
 		vMap.put(mapping, pumpWrap);
 	}
@@ -328,13 +327,13 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 	* @throws  
 	*/  
 	    
-	public T decrypt(Cipher cipher, T params, Param<?>[] securityParams) throws ValidationException{
-		String encryptData = String.valueOf(getValue(params, EncryptDataParam.getDefaultKey()));
-		String encryptSource = String.valueOf(getValue(params, EncryptSourceParam.getDefaultKey()));
-		int encryptFlag = (int)(getValue(params, EncryptFlagParam.getDefaultKey()));
+	public T decrypt(Cipher cipher, T params, SecurityParam securityParams) throws ValidationException{
+		String encryptData = getValue(params, securityParams.getEncryptDataParam());
+		String encryptSource = getValue(params, securityParams.getEncryptSourceParam());
+		Number encryptFlag = getValue(params, securityParams.getEncryptFlagParam());
 		
 		String paramsStr;
-		PrivateKey privateKey = KPCOLLECTION.get(encryptFlag).getPrivate();
+		PrivateKey privateKey = KPCOLLECTION.get(encryptFlag.intValue()).getPrivate();
 		if(encryptSource!= null && encryptSource.equalsIgnoreCase("js")){
 			paramsStr = cipher.decryptJS(encryptData, privateKey);
 		}else{
@@ -354,6 +353,19 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 		return new CryptoCipher();
 	}
 
+	/**  
+	* @Title: getValue  
+	* @Description: 获取原始参数中转换类型后的值
+	* @param @param params
+	* @param @param param
+	* @param @return    参数  
+	* @return P    返回类型  
+	* @throws  
+	*/  
+	protected <P> P getValue(T params, Param<P> param) {
+		Object value = getValue(params, param.getValue());
+		return value == null?null:param.cast(value);
+	}
 	  
 	/**  
 	* @Title: getValue  
@@ -365,9 +377,8 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 	* @throws  
 	*/  
 	    
-	protected abstract Object getValue(T params, String key);
+	protected abstract Object getValue(T params, String key);	
 	
-	  
 	/**  
 	* @Title: setValue  
 	* @Description: 设置原始参数值

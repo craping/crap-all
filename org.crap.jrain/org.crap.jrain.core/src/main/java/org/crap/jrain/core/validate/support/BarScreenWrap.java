@@ -1,5 +1,6 @@
 package org.crap.jrain.core.validate.support;
 
+import org.crap.jrain.core.validate.security.param.SecurityParam;
 
 /** 
  * @project Crap
@@ -16,7 +17,7 @@ public class BarScreenWrap {
 	
 	private boolean security;
 	
-	private Param<?> [] securityParams;
+	private SecurityParam securityParams;
 	
 	private String desc;
 	
@@ -38,10 +39,10 @@ public class BarScreenWrap {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	public Param<?>[] getSecurityParams() {
+	public SecurityParam getSecurityParams() {
 		return securityParams;
 	}
-	public void setSecurityParams(Param<?>[] securityParams) {
+	public void setSecurityParams(SecurityParam securityParams) {
 		this.securityParams = securityParams;
 	}
 }

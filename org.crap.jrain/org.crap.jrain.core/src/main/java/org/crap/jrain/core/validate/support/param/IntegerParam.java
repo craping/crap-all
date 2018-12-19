@@ -26,7 +26,7 @@ public class IntegerParam extends NumberParam {
 	}
 	
 	@Override
-	protected Number cast0(Object param) {
+	protected Integer cast0(Object param) {
 		return Integer.valueOf(param.toString());
 	}	
 }
