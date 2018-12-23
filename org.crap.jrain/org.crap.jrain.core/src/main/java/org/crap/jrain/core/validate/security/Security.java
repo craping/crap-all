@@ -16,7 +16,9 @@ public interface Security {
 	Cipher createCipher();
 	
 	public static Cipher getCipher() {
-		return LOCAL_CIPHER.get();
+		Cipher cipher = LOCAL_CIPHER.get();
+		LOCAL_CIPHER.remove();
+		return cipher;
 	}
 	
 	public static void setCipher(Cipher cipher) {

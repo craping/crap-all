@@ -11,7 +11,7 @@ import org.crap.jrain.core.error.support.Errors;
 import org.crap.jrain.core.validate.annotation.BarScreen;
 
 @Pump("map")
-public class MapPump extends DataPump<Map<?, ?>> {
+public class MapPump extends DataPump<Map<?, ?>, Object, Object> {
 	
 	@Pipe("test")
 	@BarScreen(desc="API文档")

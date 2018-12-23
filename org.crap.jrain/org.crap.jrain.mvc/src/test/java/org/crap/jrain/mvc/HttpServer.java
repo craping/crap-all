@@ -29,7 +29,7 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 public class HttpServer {
 
 	static final boolean SSL = System.getProperty("ssl") != null;
-    static final int PORT = Integer.parseInt(System.getProperty("port", SSL? "8443" : "8080"));
+    public static final int PORT = Integer.parseInt(System.getProperty("port", SSL? "8443" : "8080"));
 	/** 用于分配处理业务线程的线程组个数 */
 	protected static final int BIZGROUPSIZE = Runtime.getRuntime().availableProcessors() * 2; // 默认
 	/** 业务出现线程大小 */

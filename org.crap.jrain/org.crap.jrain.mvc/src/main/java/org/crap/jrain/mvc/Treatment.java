@@ -3,7 +3,10 @@ package org.crap.jrain.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.crap.jrain.core.asm.handler.DataPump;
 import org.crap.jrain.core.bean.result.Errcode;
+import org.crap.jrain.core.bean.result.criteria.Data;
+import org.crap.jrain.core.bean.result.criteria.DataResult;
 import org.crap.jrain.core.error.support.Errors;
 import org.crap.jrain.core.launch.Boot;
 import org.crap.jrain.core.validate.BarScreenFactory;
@@ -56,7 +59,6 @@ public abstract class Treatment<TRequest, TResponse> {
 		DataBarScreen<Map<?, ?>> dBS = bsFactory.createDataBarScreen(dataType);
 		
 		Map<?, ?> params = getRawParams(request, dataType);
-		
 		Render<TRequest, TResponse> render = renders.get(format);
 		if(render == null)
 			render = getDefaultRender();
@@ -68,12 +70,20 @@ public abstract class Treatment<TRequest, TResponse> {
 				return;
 			}
 			
-			Errcode errcodeResult = boot.getHandler(mapping).execute(params);
+			@SuppressWarnings("unchecked")
+			DataPump<Map<?,?>, TRequest, TResponse> pump = (DataPump<Map<?, ?>, TRequest, TResponse>) boot.getHandler(mapping);
+			pump.setRequest(request);
+			pump.setResponse(response);
+			Errcode errcodeResult = pump.execute(params);//boot.getHandler(mapping).execute(params);
 			if(render != null)
 				render.render(errcodeResult, request, response);
 		} catch (ValidationException e) {
 			e.printStackTrace();
 			render.render(e.toResult(), request, response);
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			render.render(new DataResult(Errors.EXCEPTION_UNKNOW, new Data(e.getMessage())), request, response);
 			return;
 		}
 	}
