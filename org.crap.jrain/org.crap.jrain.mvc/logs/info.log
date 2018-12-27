@@ -577,3 +577,79 @@
 2018-12-20 04:05:34.775 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0xecc34c62, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
 2018-12-20 04:05:34.901 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0xecc34c62, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0xe0e174e5, L:/127.0.0.1:8080 - R:/127.0.0.1:63336]
 2018-12-20 04:05:34.902 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0xecc34c62, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:22:03.391 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:98) - load path:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/config/language
+2018-12-23 15:22:03.395 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:102) - load realPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/config/language
+2018-12-23 15:22:03.397 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:107) - load files num:2
+2018-12-23 15:22:03.398 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\en_US.properties
+2018-12-23 15:22:03.398 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\zh_CN.properties
+2018-12-23 15:22:07.990 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:138) - scan [@Pump] from path:[org.crap.jrain.mvc.pump]
+2018-12-23 15:22:07.994 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:119) - 解析路径：file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:22:07.994 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:120) - 解析路径：/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:22:07.995 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:123) - uriPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:22:08.019 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[api$apiDocument]
+2018-12-23 15:22:08.034 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:22:08.035 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:22:08.064 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump.class
+2018-12-23 15:22:08.064 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:22:08.065 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump$api.class
+2018-12-23 15:22:08.065 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:22:08.067 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.mvc.pump.ApiPump$api] done
+2018-12-23 15:22:08.068 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[api$getPublicKey]
+2018-12-23 15:22:08.068 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:22:08.069 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:22:08.071 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump.class
+2018-12-23 15:22:08.071 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:22:08.071 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump$publicKey.class
+2018-12-23 15:22:08.072 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:22:08.079 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.mvc.pump.ApiPump$publicKey] done
+2018-12-23 15:22:08.080 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[api$apiDocument]
+2018-12-23 15:22:08.081 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[api$getPublicKey]
+2018-12-23 15:22:08.081 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:159) - scan [@Pump] complete.
+2018-12-23 15:22:09.238 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f] REGISTERED
+2018-12-23 15:22:09.240 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f] BIND: 0.0.0.0/0.0.0.0:8080
+2018-12-23 15:22:09.243 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] ACTIVE
+2018-12-23 15:22:37.315 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0xc4831028, L:/127.0.0.1:8080 - R:/127.0.0.1:54563]
+2018-12-23 15:22:37.316 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:22:46.231 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0x823ab036, L:/127.0.0.1:8080 - R:/127.0.0.1:54565]
+2018-12-23 15:22:46.233 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:22:57.000 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0x0ef22767, L:/127.0.0.1:8080 - R:/127.0.0.1:54569]
+2018-12-23 15:22:57.000 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:23:17.457 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0x84912f93, L:/127.0.0.1:8080 - R:/127.0.0.1:54571]
+2018-12-23 15:23:17.458 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:27:10.160 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0x05772f74, L:/127.0.0.1:8080 - R:/127.0.0.1:55477]
+2018-12-23 15:27:10.160 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:27:57.668 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0xd49b4cc4, L:/127.0.0.1:8080 - R:/127.0.0.1:55617]
+2018-12-23 15:27:57.669 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x264b1b1f, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+2018-12-23 15:39:10.624 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:98) - load path:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/config/language
+2018-12-23 15:39:10.630 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:102) - load realPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/config/language
+2018-12-23 15:39:10.632 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:107) - load files num:2
+2018-12-23 15:39:10.632 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\en_US.properties
+2018-12-23 15:39:10.632 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\zh_CN.properties
+2018-12-23 15:39:16.227 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:138) - scan [@Pump] from path:[org.crap.jrain.mvc.pump]
+2018-12-23 15:39:16.231 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:119) - 解析路径：file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:39:16.231 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:120) - 解析路径：/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:39:16.232 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:123) - uriPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:39:16.284 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[api$apiDocument]
+2018-12-23 15:39:16.297 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:39:16.298 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:39:16.332 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump.class
+2018-12-23 15:39:16.333 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:39:16.333 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump$api.class
+2018-12-23 15:39:16.333 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:39:16.335 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.mvc.pump.ApiPump$api] done
+2018-12-23 15:39:16.336 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[api$getPublicKey]
+2018-12-23 15:39:16.336 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:39:16.336 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:39:16.338 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump.class
+2018-12-23 15:39:16.338 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/
+2018-12-23 15:39:16.338 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump/ApiPump$publicKey.class
+2018-12-23 15:39:16.338 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.mvc/target/test-classes/org/crap/jrain/mvc/pump
+2018-12-23 15:39:16.340 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.mvc.pump.ApiPump$publicKey] done
+2018-12-23 15:39:16.341 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[api$apiDocument]
+2018-12-23 15:39:16.341 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[api$getPublicKey]
+2018-12-23 15:39:16.341 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:159) - scan [@Pump] complete.
+2018-12-23 15:39:17.468 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x97064fec] REGISTERED
+2018-12-23 15:39:17.471 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x97064fec] BIND: 0.0.0.0/0.0.0.0:8080
+2018-12-23 15:39:17.473 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x97064fec, L:/0:0:0:0:0:0:0:0:8080] ACTIVE
+2018-12-23 15:39:23.212 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x97064fec, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0x543cbe44, L:/127.0.0.1:8080 - R:/127.0.0.1:56655]
+2018-12-23 15:39:23.214 INFO  io.netty.util.internal.logging.AbstractInternalLogger.log(AbstractInternalLogger.java:150) - [id: 0x97064fec, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE

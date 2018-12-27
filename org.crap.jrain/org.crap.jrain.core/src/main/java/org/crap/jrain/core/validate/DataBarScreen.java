@@ -150,6 +150,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 	 * @return Errcode 错误码
 	 * @throws ValidationException
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Errcode validate(T paramObject, Object... data) throws ValidationException {
 		String mapping = String.valueOf(data[0]);
@@ -160,7 +161,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 			return Errors.OK;
 		
 		if(wrap.isSecurity()){
-			paramObject = decrypt0(paramObject, wrap.getSecurityParams());
+			((Map)paramObject).putAll(decrypt0(paramObject, wrap.getSecurityParams()));
 		}
 		log.debug("request input param:{}", paramObject);
 		Errcode errcode = validateParams(paramObject, wrap.getParams());

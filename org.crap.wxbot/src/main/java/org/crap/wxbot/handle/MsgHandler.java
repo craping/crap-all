@@ -71,9 +71,12 @@ public class MsgHandler implements IMsgHandlerFace {
 				return "配置更新成功";
 			}
 			if (text.equals("333")) { // 测试群列表
-				System.out.print(WechatTools.getGroupNickNameList());
-				System.out.print(WechatTools.getGroupIdList());
-				System.out.print(Core.getInstance().getGroupMemeberMap());
+//				System.out.print(WechatTools.getGroupNickNameList());
+//				System.out.print(WechatTools.getGroupIdList());
+//				System.out.print(Core.getInstance().getGroupMemeberMap());
+			}
+			if(msg.getFromUserName().equals(Core.getInstance().getUserName())) {
+				MessageTools.sendMsgById(text, "@cb57c68bc5345ac3a087e18b6f903760");
 			}
 			
 			Set<Object> keys = KeyWord.KEYWORD.keySet();
@@ -91,8 +94,8 @@ public class MsgHandler implements IMsgHandlerFace {
 			}
 		}
 		
-		String result = "";
-		String paramStr = "{\"reqType\":0,\"perception\": {\"inputText\": {\"text\": \""+text+"\"}},\"userInfo\": {\"apiKey\": \"69add9e3d03d4194b2a2e1d22ca5c8b8\",\"userId\": \"359415\"}}";
+		String result = null;
+		/*String paramStr = "{\"reqType\":0,\"perception\": {\"inputText\": {\"text\": \""+text+"\"}},\"userInfo\": {\"apiKey\": \"69add9e3d03d4194b2a2e1d22ca5c8b8\",\"userId\": \"359415\"}}";
 		try {
 			HttpEntity entity = myHttpClient.doPost(url, paramStr);
 			result = EntityUtils.toString(entity, "UTF-8");
@@ -110,7 +113,7 @@ public class MsgHandler implements IMsgHandlerFace {
 			}
 		} catch (Exception e) {
 			logger.info(e.getMessage());
-		}
+		}*/
 		return result;
 	}
 
@@ -133,6 +136,11 @@ public class MsgHandler implements IMsgHandlerFace {
 		String fileName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
 		String voicePath = Config.picDir+"/voice" + File.separator + fileName + ".mp3";
 		DownloadTools.getDownloadFn(msg, MsgTypeEnum.VOICE.getType(), voicePath);
+		
+		if(msg.getFromUserName().equals(Core.getInstance().getUserName())) {
+			MessageTools.sendFileMsgByUserId("@cb57c68bc5345ac3a087e18b6f903760", voicePath);
+		}
+		
 		return "声音保存成功";
 	}
 
