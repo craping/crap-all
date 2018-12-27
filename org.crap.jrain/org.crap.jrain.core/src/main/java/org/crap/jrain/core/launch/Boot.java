@@ -77,13 +77,13 @@ public abstract class Boot {
 		
 		DataBarScreen.KPCOLLECTION.generate(config.getKeyPairNum());
 		
-		if(StringUtil.isBlank(config.getEncryptDataKey()))
+		if(!StringUtil.isBlank(config.getEncryptDataKey()))
 			EncryptDataParam.setDefaultKey(config.getEncryptDataKey());
 		
-		if(StringUtil.isBlank(config.getEncryptFlagKey()))
+		if(!StringUtil.isBlank(config.getEncryptFlagKey()))
 			EncryptFlagParam.setDefaultKey(config.getEncryptFlagKey());
 		
-		if(StringUtil.isBlank(config.getEncryptSourceKey()))
+		if(!StringUtil.isBlank(config.getEncryptSourceKey()))
 			EncryptSourceParam.setDefaultKey(config.getEncryptSourceKey());
 		
 		launch();
