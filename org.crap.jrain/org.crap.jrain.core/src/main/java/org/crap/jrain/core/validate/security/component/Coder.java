@@ -1,5 +1,6 @@
 package org.crap.jrain.core.validate.security.component;
 
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -86,7 +87,7 @@ public class Coder {
 	 * @throws Exception
 	 */
 	public static String encryptMD5(String str) {
-		byte[] tmp = encryptMD5(str.getBytes());
+		byte[] tmp = encryptMD5(str.getBytes(Charset.forName("utf-8")));
 		StringBuilder sb = new StringBuilder();
 		String word;
         for (byte b:tmp) {
