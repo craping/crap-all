@@ -8,6 +8,7 @@ import org.crap.jrain.core.launch.Boot;
 import org.crap.jrain.core.validate.DataType;
 import org.crap.jrain.mvc.Render;
 import org.crap.jrain.mvc.Treatment;
+import org.crap.jrain.mvc.netty.decoder.Part;
 import org.crap.jrain.mvc.netty.decoder.URIDecoder;
 import org.crap.jrain.mvc.netty.render.NettyHTMLRender;
 
@@ -85,7 +86,12 @@ public class NettyTreatment extends Treatment<FullHttpRequest, Channel> {
 								break;
 							case FileUpload:
 								FileUpload file = (FileUpload)data;
-								rawParams.put(file.getName(), file.get());
+								Part part = new Part();
+								part.setFilename(file.getFilename());
+								part.setContentType(file.getContentType());
+								part.setSize(file.getMaxSize());
+								part.setBuffer(file.get());
+								rawParams.put(file.getName(), part);
 								break;
 							default:
 								rawParams.put(data.getName(), data);

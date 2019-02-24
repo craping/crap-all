@@ -1,8 +1,5 @@
 package org.crap.jrain.mvc.netty;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-
 import org.crap.jrain.mvc.Treatment;
 import org.crap.jrain.mvc.netty.disruptor.RequestEvent;
 
@@ -10,6 +7,7 @@ import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
+import com.lmax.disruptor.util.DaemonThreadFactory;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -34,12 +32,12 @@ public class ServerDispatcher extends SimpleChannelInboundHandler<FullHttpReques
 	
 	private static final int BUFFER_SIZE = 8 * 1024;
 	
-	private static final ThreadFactory THREAD_FACTORY = Executors.defaultThreadFactory();
+//	private static final ThreadFactory THREAD_FACTORY = Executors.defaultThreadFactory();
 	
 	private static final ThreadLocal<Disruptor<RequestEvent<FullHttpRequest, Channel>>> THREAD_LOCAL = new ThreadLocal<Disruptor<RequestEvent<FullHttpRequest, Channel>>>() {
         @Override
         protected Disruptor<RequestEvent<FullHttpRequest, Channel>> initialValue() {
-            Disruptor<RequestEvent<FullHttpRequest, Channel>> disruptor = new Disruptor<>(RequestEvent<FullHttpRequest, Channel>::new, BUFFER_SIZE, THREAD_FACTORY, ProducerType.SINGLE, new YieldingWaitStrategy());
+            Disruptor<RequestEvent<FullHttpRequest, Channel>> disruptor = new Disruptor<>(RequestEvent<FullHttpRequest, Channel>::new, BUFFER_SIZE, DaemonThreadFactory.INSTANCE, ProducerType.SINGLE, new YieldingWaitStrategy());
             disruptor.handleEventsWith((event, sequence, endOfBatch) -> {
             	try {
             		event.getTreatment().process(event.getMapping(), event.getRequest(), event.getResponse());
