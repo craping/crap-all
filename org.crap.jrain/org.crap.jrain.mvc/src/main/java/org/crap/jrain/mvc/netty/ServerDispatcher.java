@@ -1,19 +1,17 @@
 package org.crap.jrain.mvc.netty;
 
 import org.crap.jrain.mvc.Treatment;
+import org.crap.jrain.mvc.netty.disruptor.Executor;
 import org.crap.jrain.mvc.netty.disruptor.RequestEvent;
 
 import com.lmax.disruptor.RingBuffer;
-import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
-import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.util.ReferenceCountUtil;
 
   
 /**  
@@ -30,26 +28,21 @@ public class ServerDispatcher extends SimpleChannelInboundHandler<FullHttpReques
 	
 	private Treatment<FullHttpRequest, Channel> treatment;
 	
+	//Disruptor环形数组队列大小
 	private static final int BUFFER_SIZE = 8 * 1024;
-	
-//	private static final ThreadFactory THREAD_FACTORY = Executors.defaultThreadFactory();
+	//消费者数量(每个事件只被消费一次)
+	private static final int EXECUTOR_SIZE = 10;
 	
 	private static final ThreadLocal<Disruptor<RequestEvent<FullHttpRequest, Channel>>> THREAD_LOCAL = new ThreadLocal<Disruptor<RequestEvent<FullHttpRequest, Channel>>>() {
         @Override
         protected Disruptor<RequestEvent<FullHttpRequest, Channel>> initialValue() {
-            Disruptor<RequestEvent<FullHttpRequest, Channel>> disruptor = new Disruptor<>(RequestEvent<FullHttpRequest, Channel>::new, BUFFER_SIZE, DaemonThreadFactory.INSTANCE, ProducerType.SINGLE, new YieldingWaitStrategy());
-            disruptor.handleEventsWith((event, sequence, endOfBatch) -> {
-            	try {
-            		event.getTreatment().process(event.getMapping(), event.getRequest(), event.getResponse());
-                } catch (Exception e) {
-                	e.printStackTrace();
-                	event.getResponse().close();
-				} finally {
-					if(event.getRequest().content().isReadable())
-						ReferenceCountUtil.release(event.getRequest());
-                    event.clear();
-                }
-    		});
+            Disruptor<RequestEvent<FullHttpRequest, Channel>> disruptor = new Disruptor<>(RequestEvent<FullHttpRequest, Channel>::new, BUFFER_SIZE, DaemonThreadFactory.INSTANCE);
+            
+            Executor[] executors = new Executor[EXECUTOR_SIZE];
+            for (int i = 0; i < executors.length; i++) {
+            	executors[i] = new Executor();
+			}
+            disruptor.handleEventsWithWorkerPool(executors);
             disruptor.start();
             return disruptor;
         }

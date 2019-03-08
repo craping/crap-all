@@ -24,4 +24,8 @@ public interface Errcode extends Serializable {
 	 * 结果描述
 	 */
 	public String getMsg();
+	
+	default boolean equal(Errcode errcode){
+		return getErrcode() == errcode.getErrcode();
+	}
 }
