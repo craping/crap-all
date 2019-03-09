@@ -14,7 +14,6 @@ import org.crap.jrain.core.validate.BarScreenFactory;
 import org.crap.jrain.core.validate.DataBarScreen;
 import org.crap.jrain.core.validate.DataType;
 import org.crap.jrain.core.validate.DefaultBarScreenFactory;
-import org.crap.jrain.core.validate.exception.ValidationException;
 
   
 /**  
