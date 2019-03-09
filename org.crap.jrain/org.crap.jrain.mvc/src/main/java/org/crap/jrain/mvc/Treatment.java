@@ -3,6 +3,7 @@ package org.crap.jrain.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.crap.jrain.core.ErrcodeException;
 import org.crap.jrain.core.asm.handler.DataPump;
 import org.crap.jrain.core.bean.result.Errcode;
 import org.crap.jrain.core.bean.result.criteria.Data;
@@ -77,7 +78,7 @@ public abstract class Treatment<TRequest, TResponse> {
 			Errcode errcodeResult = pump.execute(params);//boot.getHandler(mapping).execute(params);
 			if(render != null)
 				render.render(errcodeResult, request, response);
-		} catch (ValidationException e) {
+		} catch (ErrcodeException e) {
 			e.printStackTrace();
 			render.render(e.toResult(), request, response);
 			return;
