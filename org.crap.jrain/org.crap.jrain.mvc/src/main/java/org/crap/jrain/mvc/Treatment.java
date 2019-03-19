@@ -15,6 +15,8 @@ import org.crap.jrain.core.validate.DataBarScreen;
 import org.crap.jrain.core.validate.DataType;
 import org.crap.jrain.core.validate.DefaultBarScreenFactory;
 
+import io.netty.util.ReferenceCountUtil;
+
   
 /**  
 * @ClassName: Treatment  
@@ -59,6 +61,8 @@ public abstract class Treatment<TRequest, TResponse> {
 		DataBarScreen<Map<?, ?>> dBS = bsFactory.createDataBarScreen(dataType);
 		
 		Map<?, ?> params = getRawParams(request, dataType);
+		ReferenceCountUtil.release(request);
+		
 		Render<TRequest, TResponse> render = renders.get(format);
 		if(render == null)
 			render = getDefaultRender();

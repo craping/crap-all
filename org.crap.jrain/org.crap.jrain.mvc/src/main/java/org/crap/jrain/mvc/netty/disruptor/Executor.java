@@ -4,7 +4,6 @@ import com.lmax.disruptor.WorkHandler;
 
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.util.ReferenceCountUtil;
 
 public class Executor implements WorkHandler<RequestEvent<FullHttpRequest, Channel>> {
 
@@ -16,8 +15,8 @@ public class Executor implements WorkHandler<RequestEvent<FullHttpRequest, Chann
         	e.printStackTrace();
         	event.getResponse().close();
 		} finally {
-			if(event.getRequest().content().isReadable())
-				ReferenceCountUtil.release(event.getRequest());
+//			if(event.getRequest().content().isReadable())
+//				ReferenceCountUtil.release(event.getRequest());
             event.clear();
         }
 	}
