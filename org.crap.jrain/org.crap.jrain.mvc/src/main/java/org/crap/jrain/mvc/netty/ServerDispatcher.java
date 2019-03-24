@@ -29,9 +29,9 @@ public class ServerDispatcher extends SimpleChannelInboundHandler<FullHttpReques
 	private Treatment<FullHttpRequest, Channel> treatment;
 	
 	//Disruptor环形数组队列大小
-	private static final int BUFFER_SIZE = 8 * 1024;
+	private static final int BUFFER_SIZE = 1024 * 1024;
 	//消费者数量(每个事件只被消费一次)
-	private static final int EXECUTOR_SIZE = 10;
+	private static final int EXECUTOR_SIZE = 100;
 	
 	private static final ThreadLocal<Disruptor<RequestEvent<FullHttpRequest, Channel>>> THREAD_LOCAL = new ThreadLocal<Disruptor<RequestEvent<FullHttpRequest, Channel>>>() {
         @Override
