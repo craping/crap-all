@@ -18,7 +18,7 @@ import org.crap.jrain.core.bean.result.Errcode;
 */  
 
 @Separate("execute")
-public abstract class DataPump<T extends Map<?,?>, TRequest, TResponse> implements ASMPump<T> {
+public abstract class DataPump<TRequest, TResponse> implements ASMPump<Map<?,?>> {
 	
 	private TRequest request;
 	
@@ -26,7 +26,7 @@ public abstract class DataPump<T extends Map<?,?>, TRequest, TResponse> implemen
 	/**
 	 *  ASM reflect to custom method
 	 */
-	public Errcode execute (T params) {System.out.println("DataPump"); return null;}
+	public Errcode execute (Map<?,?> params) {System.out.println("DataPump"); return null;}
 	
 	
 	public TRequest getRequest() {
