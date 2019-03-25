@@ -75,7 +75,7 @@ public abstract class Treatment<TRequest, TResponse> {
 			}
 			
 			@SuppressWarnings("unchecked")
-			DataPump<Map<?,?>, TRequest, TResponse> pump = (DataPump<Map<?, ?>, TRequest, TResponse>) boot.getHandler(mapping);
+			DataPump<TRequest, TResponse> pump = (DataPump<TRequest, TResponse>) boot.getHandler(mapping);
 			pump.setRequest(request);
 			pump.setResponse(response);
 			Errcode errcodeResult = pump.execute(params);//boot.getHandler(mapping).execute(params);
