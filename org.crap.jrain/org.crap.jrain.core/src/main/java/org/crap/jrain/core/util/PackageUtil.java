@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -41,7 +42,7 @@ public class PackageUtil {
 					Class<?> cls = Class.forName(className);
 					if(cls.isAnnotationPresent(Pump.class)){
 						Pump pump = cls.getAnnotation(Pump.class);
-						document.append("<p><strong style='color:red'>模块:").append(pump.value()).append("</strong></p>");
+						document.append("<p><strong style='color:red'>模块：").append(pump.value()).append("</strong></p>");
 						for (Method method : cls.getMethods()) {
 							if(method.isAnnotationPresent(Pipe.class)){
 								Pipe pipe = method.getAnnotation(Pipe.class);
@@ -50,28 +51,29 @@ public class PackageUtil {
 								
 								BarScreen barScreen = method.getAnnotation(BarScreen.class);
 								if(barScreen != null) {
-									document.append("接口说明:").append(barScreen.desc()).append(",(安全协议:").append(barScreen.security()).append(")</br>");
-									document.append("参数:</br>");
+									document.append("接口类型：").append(method.getParameterTypes()[0].equals(Map.class)?"GET":"POST").append("</br>");
+									document.append("接口说明：").append(barScreen.desc()).append(",(安全协议：").append(barScreen.security()).append(")</br>");
+									document.append("参数：</br>");
 									for (Parameter param : barScreen.params()){
 										if(MultiParam.class.isAssignableFrom(param.type())){
 											MultiParam<?> multiParam = (MultiParam<?>) param.type().getDeclaredConstructor().newInstance();
 											for (Param<?> aParam : multiParam.getParams()) {
 												String enums = aParam.getEnums() != null && aParam.getEnums().length >0?
-														(EnumParam.class.isAssignableFrom(aParam.getClass())?"取值范围:["+aParam.toString()+"]":"取值范围:"+Arrays.toString(aParam.getEnums())):"";
+														(EnumParam.class.isAssignableFrom(aParam.getClass())?"取值范围：["+aParam.toString()+"]":"取值范围："+Arrays.toString(aParam.getEnums())):"";
 															
 												document.append("<span style='color:#FF0000'>").append(aParam.getValue()).append("</span>:<span style='color:#0000FF'>").append(aParam.getDesc())
-												.append("[是否必要:").append(aParam.isRequired()).append("] ")
+												.append("[是否必要：").append(aParam.isRequired()).append("] ")
 												.append(enums)
 												.append("</span></br>");
 											}
 										}else{
 											Param<?> aParam = (Param<?>) param.type().getDeclaredConstructor().newInstance();
 											String enums = aParam.getEnums() != null && aParam.getEnums().length >0?
-													(EnumParam.class.isAssignableFrom(aParam.getClass())?"取值范围:["+aParam.toString()+"]":"取值范围:"+Arrays.toString(aParam.getEnums())):"";
+													(EnumParam.class.isAssignableFrom(aParam.getClass())?"取值范围：["+aParam.toString()+"]":"取值范围："+Arrays.toString(aParam.getEnums())):"";
 											
 											if(!param.value().equals("") || aParam.getValue() != null)
 												document.append("<span style='color:#FF0000'>").append(param.value().equals("")?aParam.getValue():param.value()).append("</span>:<span style='color:#0000FF'>")
-												.append(param.desc().equals("")?aParam.getDesc():param.desc()).append(" [是否必要:")
+												.append(param.desc().equals("")?aParam.getDesc():param.desc()).append(" [是否必要：")
 												.append(aParam.isRequired() == null?param.required():aParam.isRequired()).append("] ")
 												.append(enums).append("</span></br>");
 											else if(!param.desc().equals("") || aParam.getDesc() != null)

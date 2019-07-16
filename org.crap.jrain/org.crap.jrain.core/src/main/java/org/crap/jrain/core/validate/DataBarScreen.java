@@ -25,7 +25,6 @@ import org.crap.jrain.core.validate.exception.ParamIllegalRangeException;
 import org.crap.jrain.core.validate.exception.ParamRequiredException;
 import org.crap.jrain.core.validate.exception.ValidationException;
 import org.crap.jrain.core.validate.security.Cipher;
-import org.crap.jrain.core.validate.security.DefaultKeyPairCollection;
 import org.crap.jrain.core.validate.security.KeyPairCollection;
 import org.crap.jrain.core.validate.security.Security;
 import org.crap.jrain.core.validate.security.component.CryptoCipher;
@@ -54,7 +53,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 	
 	protected static final Map<String, BarScreenWrap> vMap = new HashMap<String, BarScreenWrap>();
 	
-	public static KeyPairCollection KPCOLLECTION = new DefaultKeyPairCollection();
+	public static KeyPairCollection KPCOLLECTION;
 	
 	/**
 	 * 通过{@Parameter} 生成 {@Param}抽象参数验证类型

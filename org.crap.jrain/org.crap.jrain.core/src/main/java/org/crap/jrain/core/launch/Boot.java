@@ -75,7 +75,7 @@ public abstract class Boot {
 		if(config.getKeyPairCollection() != null)
 			DataBarScreen.setKPCOLLECTION(config.getKeyPairCollection());
 		
-		DataBarScreen.KPCOLLECTION.generate(config.getKeyPairNum());
+//		DataBarScreen.KPCOLLECTION.generate(config.getKeyPairNum());
 		
 		if(!StringUtil.isBlank(config.getEncryptDataKey()))
 			EncryptDataParam.setDefaultKey(config.getEncryptDataKey());
