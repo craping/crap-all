@@ -22,6 +22,7 @@ public enum Errors  implements LangErrcode {
 	OK(0, "ok"),
 	/** 未知异常 */
 	EXCEPTION_UNKNOW(-1),
+	REQUEST_METHOD_ERROR(1),
 	/** 参数为空 */
 	PARAM_SERVICE_NOT_DEFINITION(1),
 	PARAM_REQUIRED(1),

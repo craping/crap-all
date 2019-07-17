@@ -46,13 +46,16 @@ public class PackageUtil {
 						for (Method method : cls.getMethods()) {
 							if(method.isAnnotationPresent(Pipe.class)){
 								Pipe pipe = method.getAnnotation(Pipe.class);
-								document.append("<a target='_blank' href='").append(host).append("/").append(pump.value()).append("/").append(pipe.value()).append("'>")
-								.append(host).append("/").append(pump.value()).append("/").append(pipe.value()).append("</a></br></br>");
-								
+								String url = host+"/"+pump.value()+"/"+pipe.value();
+								document.append("请求地址：<span style='color:blue'>").append(url).append("</span> ")
+								.append("格式：[")
+								.append("<a target='_blank' href='").append(url).append("'>html</a>").append(" ")
+								.append("<a target='_blank' href='").append(url).append("?format=json").append("'>json</a>").append(" ")
+								.append("<a target='_blank' href='").append(url).append("?format=xml").append("'>xml</a>").append("]").append("</br>");
 								BarScreen barScreen = method.getAnnotation(BarScreen.class);
 								if(barScreen != null) {
-									document.append("接口类型：").append(method.getParameterTypes()[0].equals(Map.class)?"GET":"POST").append("</br>");
-									document.append("接口说明：").append(barScreen.desc()).append(",(安全协议：").append(barScreen.security()).append(")</br>");
+									document.append("请求方法：").append(method.getParameterTypes()[0].equals(Map.class)?"GET":"POST").append("</br>");
+									document.append("接口说明：").append(barScreen.desc()).append(" (加密传输：").append(barScreen.security()).append(")</br>");
 									document.append("参数：</br>");
 									for (Parameter param : barScreen.params()){
 										if(MultiParam.class.isAssignableFrom(param.type())){
