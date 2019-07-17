@@ -54,7 +54,7 @@ public class PackageUtil {
 								.append("<a target='_blank' href='").append(url).append("?format=xml").append("'>xml</a>").append("]").append("</br>");
 								BarScreen barScreen = method.getAnnotation(BarScreen.class);
 								if(barScreen != null) {
-									document.append("请求方法：").append(method.getParameterTypes()[0].equals(Map.class)?"GET":"POST").append("</br>");
+									document.append("请求方式：").append(method.getParameterTypes()[0].equals(Map.class)?"GET":"POST").append("</br>");
 									document.append("接口说明：").append(barScreen.desc()).append(" (加密传输：").append(barScreen.security()).append(")</br>");
 									document.append("参数：</br>");
 									for (Parameter param : barScreen.params()){
