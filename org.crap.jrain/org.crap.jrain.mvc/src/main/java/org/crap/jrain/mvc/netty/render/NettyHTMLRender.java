@@ -20,6 +20,11 @@ public class NettyHTMLRender extends NettyRender {
 	
 	@Override
 	public void render(Errcode result, FullHttpRequest request, Channel channel) {
+		if(result.getResult() != Errors.OK.getResult()){
+			writeResponse(true, request, channel, result.getMsg());
+			return;
+		}
+		
 		if(!(result instanceof DataResult)) {
 			writeResponse(true, request, channel, Errors.DATA_TYPE_ERROR.getMsg());
 			return;
