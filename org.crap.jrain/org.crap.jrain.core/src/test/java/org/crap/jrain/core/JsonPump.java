@@ -11,7 +11,7 @@ import org.crap.jrain.core.validate.annotation.BarScreen;
 import net.sf.json.JSONObject;
 
 @Pump("json")
-public class JsonPump extends DataPump<JSONObject, Object, Object> {
+public class JsonPump extends DataPump<Object, Object> {
 	
 	@Pipe("test")
 	@BarScreen(desc="API文档")

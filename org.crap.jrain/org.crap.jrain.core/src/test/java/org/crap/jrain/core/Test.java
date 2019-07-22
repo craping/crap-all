@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 
 public class Test {
 	
-	public static void main1(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 		Boot boot = new DefaultBoot(new Config("org.crap.jrain.core"));
 		ASMPump<Map<?, ?>> pump = boot.getHandler("map$test");
 		Map<?, ?> params = new HashMap<>();
@@ -28,7 +28,7 @@ public class Test {
 		pump.execute(params);
 	}
 	
-	public static void main(String[] args) throws Exception {
+	public static void main1(String[] args) throws Exception {
 		KeyPair keyPair = RSA.generateKeyPair();
 		byte[] clientAESKey = AES.generateKey(16);
 		CryptoCipher c = new CryptoCipher();

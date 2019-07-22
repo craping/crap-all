@@ -1,13 +1,13 @@
 package disruptor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.WorkHandler;
+import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
+import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 
 public class LongEventMain {
@@ -19,60 +19,65 @@ public class LongEventMain {
 		int bufferSize = 8;
 		
 		Disruptor<LongEvent> disruptor = new Disruptor<>(LongEvent::new, bufferSize, DaemonThreadFactory.INSTANCE);
-		
+//		Disruptor<LongEvent> disruptor = new Disruptor<>(LongEvent::new, bufferSize, DaemonThreadFactory.INSTANCE, ProducerType.SINGLE, new YieldingWaitStrategy());
 		disruptor.handleEventsWith((event, sequence, endOfBatch) -> {
-			Thread.sleep(2000);
-			System.out.println("H1 Event: " + event.getValue());
+			System.out.printf("H1-T%s Event: %s\n",Thread.currentThread().getId(), event.getValue());
+//			System.out.println("wait H1");
+			Thread.sleep(1000);
+//			System.out.println("go on H1");
+//			System.out.println(disruptor.getRingBuffer().getMinimumGatingSequence() + "-" + disruptor.getRingBuffer().getCursor());
 		}
-//		,(event, sequence, endOfBatch) -> {
-//			System.out.println("H2 Event: " + event.getValue());
-//		}
-		);
+		,(event, sequence, endOfBatch) -> {
+			System.out.printf("H2-T%s Event: %s\n",Thread.currentThread().getId(), event.getValue());
+			Thread.sleep(1000);
+//			System.out.println(disruptor.getRingBuffer().getMinimumGatingSequence() + "-" + disruptor.getRingBuffer().getCursor());
+		});
+
+		
 //		disruptor.handleEventsWithWorkerPool((event) -> {
-//			Thread.sleep(3000);
-//			System.out.println("Sleep H1 Event: " + event.getValue());
+//			System.out.printf("H1-T%s Event: %s\n",Thread.currentThread().getId(), event.getValue());
+//			System.out.println("wait H1");
+//			Thread.sleep(10000);
+//			System.out.println("go on H1");
 //		},(event) -> {
-//			System.out.println("H2 Event: " + event.getValue());
+//			System.out.printf("H2-T%s Event: %s\n",Thread.currentThread().getId(), event.getValue());
+//			System.out.println("wait H2");
+//			Thread.sleep(5000);
+//			System.out.println("go on H2");
 //		},(event) -> {
-//			System.out.println("H3 Event: " + event.getValue());
+//			System.out.printf("H3-T%s Event: %s\n",Thread.currentThread().getId(), event.getValue());
+//			System.out.println("wait H3");
+//			Thread.sleep(1000);
+//			System.out.println("go on H3");
 //		},(event) -> {
-//			System.out.println("H4 Event: " + event.getValue());
-//		},(event) -> {
-//			System.out.println("H5 Event: " + event.getValue());
+//			System.out.printf("H4-T%s Event: %s\n",Thread.currentThread().getId(), event.getValue());
 //		});
+
 		disruptor.start();
 		
 		
 		
-		for (int i = 0; i < 3; i++) {
-			new Thread(() -> {
-				RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
-				for (long l = 0; l < 5; l++) {
-					List<Long> list = new ArrayList<>();
-					list.add(count.getAndIncrement());
-					ringBuffer.publishEvent((event, sequence, data) -> {
-						event.setValue(data.get(0));
-					}, list);
-					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}).start();
-		}
-		
 		RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
 		
-        for (long l = 0; l < 5; l++) {
-        	List<Long> list = new ArrayList<>();
-        	list.add(count.getAndIncrement());
-            ringBuffer.publishEvent((event, sequence, data) -> {
-            	event.setValue(data.get(0));
-            }, list);
-            Thread.sleep(500);
-        }
-        
+//		for (int i = 0; i < 3; i++) {
+//			new Thread(() -> {
+//				for (long l = 0; l < 5; l++) {
+//					ringBuffer.publishEvent((event, sequence, data) -> {
+//						event.setValue(count.getAndIncrement());
+//					}, count);
+//				}
+//			}).start();
+//		}
+		
+//		while(true){
+	        for (long l = 0; l < 100; l++) {
+	            ringBuffer.publishEvent((event, sequence, data) -> {
+	            	event.setValue(count.getAndIncrement());
+	            }, count);
+	        }
+	        System.out.println("生产完毕");
+//	        Thread.sleep(1000);
+//		}
         Thread.sleep(5000000);
 	}
 }

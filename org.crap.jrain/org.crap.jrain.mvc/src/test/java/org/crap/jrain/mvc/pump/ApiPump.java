@@ -24,7 +24,7 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import net.sf.json.JSONObject;
 
 @Pump("api")
-public class ApiPump extends DataPump<JSONObject, FullHttpRequest, Channel> {
+public class ApiPump extends DataPump<FullHttpRequest, Channel> {
 	
 	@Pipe("apiDocument")
 	@BarScreen(desc="API文档")

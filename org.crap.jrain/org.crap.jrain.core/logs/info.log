@@ -899,3 +899,87 @@
 2018-12-16 11:36:00.276 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:56) - generate secure [@Pipe] to [org.crap.jrain.core.MapPump$api] done
 2018-12-16 11:36:00.276 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:155) - scan [@Pump] complete.
 2018-12-16 11:36:00.278 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:175) - scan [@BarScreen] from path:[map$test]
+2019-03-25 15:17:51.297 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:98) - load path:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/config/language
+2019-03-25 15:17:51.306 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:102) - load realPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/config/language
+2019-03-25 15:17:51.307 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:107) - load files num:2
+2019-03-25 15:17:51.307 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\en_US.properties
+2019-03-25 15:17:51.307 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\zh_CN.properties
+2019-03-25 15:17:55.278 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:138) - scan [@Pump] from path:[org.crap.jrain.core]
+2019-03-25 15:17:55.281 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:119) - 解析路径：file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:17:55.281 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:120) - 解析路径：/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:17:55.282 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:123) - uriPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:17:55.302 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[json$test]
+2019-03-25 15:17:55.308 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:17:55.309 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:17:55.330 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/JsonPump.class
+2019-03-25 15:17:55.331 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:17:55.331 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/JsonPump$api.class
+2019-03-25 15:17:55.331 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:17:55.334 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.core.JsonPump$api] done
+2019-03-25 15:17:55.336 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[json$test]
+2019-03-25 15:17:55.336 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[map$test]
+2019-03-25 15:17:55.337 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:17:55.337 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:17:55.340 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/MapPump.class
+2019-03-25 15:17:55.340 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:17:55.340 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/MapPump$api.class
+2019-03-25 15:17:55.340 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:17:55.343 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.core.MapPump$api] done
+2019-03-25 15:17:55.346 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[map$test]
+2019-03-25 15:17:55.346 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:159) - scan [@Pump] complete.
+2019-03-25 15:21:32.363 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:98) - load path:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/config/language
+2019-03-25 15:21:32.366 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:102) - load realPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/config/language
+2019-03-25 15:21:32.368 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:107) - load files num:2
+2019-03-25 15:21:32.368 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\en_US.properties
+2019-03-25 15:21:32.368 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\zh_CN.properties
+2019-03-25 15:21:36.179 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:138) - scan [@Pump] from path:[org.crap.jrain.core]
+2019-03-25 15:21:36.181 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:119) - 解析路径：file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:21:36.182 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:120) - 解析路径：/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:21:36.182 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:123) - uriPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:21:36.200 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[json$test]
+2019-03-25 15:21:36.211 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:21:36.211 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:21:36.234 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/JsonPump.class
+2019-03-25 15:21:36.234 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:21:36.235 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/JsonPump$api.class
+2019-03-25 15:21:36.235 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:21:36.237 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.core.JsonPump$api] done
+2019-03-25 15:21:36.238 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[json$test]
+2019-03-25 15:21:36.239 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[map$test]
+2019-03-25 15:21:36.239 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:21:36.240 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:21:36.241 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/MapPump.class
+2019-03-25 15:21:36.242 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:21:36.242 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/MapPump$api.class
+2019-03-25 15:21:36.242 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:21:36.243 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.core.MapPump$api] done
+2019-03-25 15:21:36.244 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[map$test]
+2019-03-25 15:21:36.244 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:159) - scan [@Pump] complete.
+2019-03-25 15:22:04.864 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:98) - load path:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/config/language
+2019-03-25 15:22:04.867 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:102) - load realPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/config/language
+2019-03-25 15:22:04.868 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:107) - load files num:2
+2019-03-25 15:22:04.869 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\en_US.properties
+2019-03-25 15:22:04.869 INFO  org.crap.jrain.core.Resource.loadProp(Resource.java:109) - load file C:\Users\Crap\eclipse-workspace\crap-all\org.crap.jrain\org.crap.jrain.core\target\classes\config\language\zh_CN.properties
+2019-03-25 15:22:08.705 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:138) - scan [@Pump] from path:[org.crap.jrain.core]
+2019-03-25 15:22:08.707 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:119) - 解析路径：file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:22:08.707 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:120) - 解析路径：/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:22:08.708 INFO  org.crap.jrain.core.util.PackageUtil.getClassName(PackageUtil.java:123) - uriPath:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:22:08.726 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[json$test]
+2019-03-25 15:22:08.733 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:22:08.733 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:22:08.753 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/JsonPump.class
+2019-03-25 15:22:08.753 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:22:08.753 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/JsonPump$api.class
+2019-03-25 15:22:08.754 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:22:08.755 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.core.JsonPump$api] done
+2019-03-25 15:22:08.756 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[json$test]
+2019-03-25 15:22:08.758 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:51) - regist [@Pipe] to Pump mapping[map$test]
+2019-03-25 15:22:08.758 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:169) - ClassUtil.loadClass classpath0: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:22:08.759 INFO  org.crap.jrain.core.util.ClassUtil.loadClass(ClassUtil.java:170) - ClassUtil.loadClass classpath1: file:/C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:22:08.762 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:95) - classpath: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/MapPump.class
+2019-03-25 15:22:08.762 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:96) - url: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/
+2019-03-25 15:22:08.762 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:97) - path: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core/MapPump$api.class
+2019-03-25 15:22:08.766 INFO  org.crap.jrain.core.asm.MethodEnhancer.generateSecure(MethodEnhancer.java:98) - dir: /C:/Users/Crap/eclipse-workspace/crap-all/org.crap.jrain/org.crap.jrain.core/target/test-classes/org/crap/jrain/core
+2019-03-25 15:22:08.768 INFO  org.crap.jrain.core.asm.adapter.DataPumpAdapter.resolve(DataPumpAdapter.java:60) - generate secure [@Pipe] to [org.crap.jrain.core.MapPump$api] done
+2019-03-25 15:22:08.769 INFO  org.crap.jrain.core.launch.Boot.scanBarScreen(Boot.java:190) - scan [@BarScreen] from path:[map$test]
+2019-03-25 15:22:08.769 INFO  org.crap.jrain.core.launch.Boot.scanPump(Boot.java:159) - scan [@Pump] complete.
