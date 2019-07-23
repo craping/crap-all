@@ -27,5 +27,7 @@ import java.lang.annotation.Target;
 public @interface Pump {
 
 	String value() default "";
+	
+	String desc() default "";
 
 }

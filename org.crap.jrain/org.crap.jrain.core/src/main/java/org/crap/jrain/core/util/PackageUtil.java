@@ -42,7 +42,7 @@ public class PackageUtil {
 					Class<?> cls = Class.forName(className);
 					if(cls.isAnnotationPresent(Pump.class)){
 						Pump pump = cls.getAnnotation(Pump.class);
-						document.append("<p><strong style='color:red'>模块：").append(pump.value()).append("</strong></p>");
+						document.append("<p><strong style='color:red'>模块：").append(pump.desc().isEmpty()?pump.value():pump.desc()).append("</strong></p>");
 						for (Method method : cls.getMethods()) {
 							if(method.isAnnotationPresent(Pipe.class)){
 								Pipe pipe = method.getAnnotation(Pipe.class);
