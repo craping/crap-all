@@ -38,6 +38,14 @@ public class Profile implements SortFilter {
 		this(new Page(params.getInt(new PageFlagParam().getValue()), params.getInt(new PageNumParam().getValue())), new Sort(params));
 	}
 	
+	public Profile(Integer page, Integer num) {
+		this(new Page(page, num), null);
+	}
+	
+	public Profile(Page page) {
+		this(page, null);
+	}
+	
 	public Profile(Page page, SortFilter sortFilter) {
 		this.page = page;
 		this.sortFilter = sortFilter;
