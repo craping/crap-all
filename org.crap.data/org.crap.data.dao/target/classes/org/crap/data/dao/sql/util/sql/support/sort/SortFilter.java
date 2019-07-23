@@ -7,7 +7,7 @@ package org.crap.data.dao.sql.util.sql.support.sort;
  * 
  * @version 1.4.3
  * 
- * @copyright 2013 - 2014 深圳亿码擎天科技有限公司 All rights reserved.
+ * 
  * 
  * @description SQL排序过滤器
  */

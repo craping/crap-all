@@ -11,7 +11,7 @@ import org.crap.jrain.core.util.StringUtil;
  * 
  * @version 1.4.3
  * 
- * @copyright 2013 - 2014 深圳亿码擎天科技有限公司 All rights reserved.
+ * 
  * 
  * @description SQL拼接逻辑枚举
  * (已过期 请参照 {@link Profile})

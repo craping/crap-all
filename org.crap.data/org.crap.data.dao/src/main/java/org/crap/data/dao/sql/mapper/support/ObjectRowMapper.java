@@ -11,7 +11,7 @@ import org.crap.data.dao.sql.mapper.AbstractObjectRowMapper;
  * 
  * @version 1.4.3
  * 
- * @copyright 2013 - 2014 深圳亿码擎天科技有限公司 All rights reserved.
+ * 
  */
 public class ObjectRowMapper extends AbstractObjectRowMapper<Object> {
 

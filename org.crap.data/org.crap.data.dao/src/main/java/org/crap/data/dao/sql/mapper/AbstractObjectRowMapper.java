@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
  * 
  * @version 1.4.3
  * 
- * @copyright 2013 - 2014 深圳亿码擎天科技有限公司 All rights reserved.
+ * 
  */
 public abstract class AbstractObjectRowMapper<T> implements RowMapper<T> {
 			

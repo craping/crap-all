@@ -15,7 +15,7 @@ import net.sf.json.JSONObject;
  * 
  * @version 1.4.3
  * 
- * @copyright 2013 - 2014 深圳亿码擎天科技有限公司 All rights reserved.
+ * 
  * 
  * @description SQL分页,排序条件生成类
  * 用于分页,排序SQL构造
