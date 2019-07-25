@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import org.crap.jrain.core.bean.result.Errcode;
 import org.crap.jrain.core.error.support.Errors;
 import org.crap.jrain.core.util.ClassUtil;
+import org.crap.jrain.core.util.StringUtil;
 import org.crap.jrain.core.validate.annotation.Attribute;
 import org.crap.jrain.core.validate.annotation.BarScreen;
 import org.crap.jrain.core.validate.annotation.Parameter;
@@ -253,7 +254,7 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 			if(param instanceof MultiParam){
 				MultiParam<?> mParam = (MultiParam<?>)param;
 				if(mParam.getParams().length > 0){
-					required = validateRequired(nullParam, emptyParam, params, mParam.getParams());
+					required = validateRequired(nullParam, emptyParam, params, mParam.getParams())?true:required;
 				}
 				continue;
 			}
@@ -268,10 +269,10 @@ public abstract class DataBarScreen<T extends Map<?, ?>> implements Validation<T
 			
 			if(!(param instanceof ValidateParam) && !param.checkRequired(value)) {
 				required = true;
-				nullParam.append(param.getDesc()).append(",");
+				nullParam.append(StringUtil.isBlank(param.getDesc())?param.getValue():param.getDesc()).append(",");
 			}
 			if(!(param instanceof ValidateParam) && !param.checkEmpty(value)){
-				emptyParam.append(param.getDesc()).append(",");
+				emptyParam.append(StringUtil.isBlank(param.getDesc())?param.getValue():param.getDesc()).append(",");
 			}
 		}
 		

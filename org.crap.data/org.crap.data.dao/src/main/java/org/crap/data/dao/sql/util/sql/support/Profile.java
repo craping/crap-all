@@ -1,12 +1,12 @@
 package org.crap.data.dao.sql.util.sql.support;
 
+import java.util.Map;
+
 import org.crap.data.dao.sql.param.PageFlagParam;
 import org.crap.data.dao.sql.param.PageNumParam;
 import org.crap.data.dao.sql.util.sql.support.sort.Sort;
 import org.crap.data.dao.sql.util.sql.support.sort.SortFilter;
 import org.crap.jrain.core.bean.result.criteria.Page;
-
-import net.sf.json.JSONObject;
 
 /**
  * @since JDK 1.7
@@ -30,12 +30,14 @@ public class Profile implements SortFilter {
 		this.page = new Page(1);
 	}
 	
-	/*public Profile(Map<String,String> params) {
-		this(new Page(params), new Sort(params));
-	}
-	*/
-	public Profile(JSONObject params) {
-		this(new Page(params.getInt(new PageFlagParam().getValue()), params.getInt(new PageNumParam().getValue())), new Sort(params));
+	public Profile(Map<?,?> params) {
+		Object pageStr = params.get(new PageFlagParam().getValue());
+		Integer page =  pageStr== null?null:Integer.valueOf(pageStr.toString());
+		
+		Object numStr = params.get(new PageNumParam().getValue());
+		Integer num =  numStr== null?null:Integer.valueOf(numStr.toString());
+		this.page = new Page(page, num);
+		this.sortFilter = new Sort(params);
 	}
 	
 	public Profile(Integer page, Integer num) {

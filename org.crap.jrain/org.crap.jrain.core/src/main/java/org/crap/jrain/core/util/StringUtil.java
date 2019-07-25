@@ -387,7 +387,7 @@ public class StringUtil {
 	 * @return true/false
 	 */
 	public static boolean isBlank(String str){
-		if(str == null || "".equals(str)){
+		if(str == null || str.isEmpty()){
 			return true;
 		}
 		return false;

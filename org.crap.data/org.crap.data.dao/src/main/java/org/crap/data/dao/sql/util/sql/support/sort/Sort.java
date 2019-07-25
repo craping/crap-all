@@ -1,8 +1,8 @@
 package org.crap.data.dao.sql.util.sql.support.sort;
 
-import org.crap.jrain.core.util.StringUtil;
+import java.util.Map;
 
-import net.sf.json.JSONObject;
+import org.crap.jrain.core.util.StringUtil;
 
 /**
  * @since JDK 1.7
@@ -28,13 +28,9 @@ public class Sort implements SortFilter {
 			columns = StringUtil.split(sortColumn, "|");
 		}
 	}
-	
-	/*public Sort(Map<String,String> params) {
-		this(params.get("sort_order"));
-	}*/
 
-	public Sort(JSONObject params) {
-		this(params.has("sort_order") ?params.getString("sort_order"):null);
+	public Sort(Map<?, ?> params) {
+		this(params.get("sort_order") != null && !params.get("sort_order").toString().isEmpty() ?params.get("sort_order").toString():null);
 	}
 	
 	@Override
