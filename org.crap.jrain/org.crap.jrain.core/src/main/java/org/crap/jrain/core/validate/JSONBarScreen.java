@@ -2,7 +2,8 @@ package org.crap.jrain.core.validate;
 
 import org.crap.jrain.core.util.StringUtil;
 
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
   
 /**  
@@ -38,7 +39,7 @@ public class JSONBarScreen extends DataBarScreen<JSONObject> {
 		for (int i = 0; i < propertys.length; i++) {
 			String p = propertys[i];
 			
-			if(!params.has(p))
+			if(!params.containsKey(p))
 				break;
 			
 			if(i != propertys.length-1){
@@ -58,7 +59,7 @@ public class JSONBarScreen extends DataBarScreen<JSONObject> {
 		for (int i = 0; i < propertys.length; i++) {
 			String p = propertys[i];
 			
-			if(!params.has(p))
+			if(!params.containsKey(p))
 				break;
 			
 			if(i != propertys.length-1){
@@ -71,6 +72,6 @@ public class JSONBarScreen extends DataBarScreen<JSONObject> {
 
 	@Override
 	public JSONObject parseParams(String data) {
-		return JSONObject.fromObject(data);
+		return JSON.parseObject(data);
 	}
 }

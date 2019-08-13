@@ -18,7 +18,7 @@ import org.crap.jrain.core.validate.support.param.StringParam;
  * @email 422655094@qq.com
  * 
  */
-@Target({ElementType.PARAMETER, ElementType.TYPE})
+@Target({ElementType.PARAMETER, ElementType.TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Parameter {
