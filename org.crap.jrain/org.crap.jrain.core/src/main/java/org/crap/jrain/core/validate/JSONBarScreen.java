@@ -59,10 +59,10 @@ public class JSONBarScreen extends DataBarScreen<JSONObject> {
 		for (int i = 0; i < propertys.length; i++) {
 			String p = propertys[i];
 			
-			if(!params.containsKey(p))
-				break;
 			
 			if(i != propertys.length-1){
+				if(!params.containsKey(p))
+					break;
 				params = params.getJSONObject(p);
 			}else{
 				params.put(p, value);
