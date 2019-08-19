@@ -7,7 +7,7 @@ public class PageNumParam extends IntegerParam {
 	public PageNumParam() {
 		this.value = "pageSize";
 		this.required = false;
-		//this.defaultValue = new String[]{"20"};
+		this.defaultValue = 20;
 		this.desc="每页显示记录数";
 	}
 }

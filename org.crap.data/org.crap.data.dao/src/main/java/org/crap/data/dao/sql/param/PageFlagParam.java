@@ -5,7 +5,7 @@ import org.crap.jrain.core.validate.support.param.IntegerParam;
 public class PageFlagParam extends IntegerParam {
 	
 	public PageFlagParam() {
-		this.value = "curPage";
+		this.value = "pageNum";
 		this.required = false;
 		this.defaultValue = 1;
 		this.desc="页数";
