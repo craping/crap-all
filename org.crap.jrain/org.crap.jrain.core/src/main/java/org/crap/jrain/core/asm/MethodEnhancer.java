@@ -154,7 +154,7 @@ public class MethodEnhancer implements Opcodes {
 		cw.visit(V1_8, ACC_PUBLIC + ACC_SUPER, newcls, null, cls, null);
 		cw.visitSource(newcls.substring(newcls.lastIndexOf("/")+1, newcls.length()) + ".java", null);
 		{ // 构造方法，每个类必须
-			mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", signature, exceptions);// 方法名称
+			mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", signature, null);// 方法名称
 			mv.visitCode();
 			Label l0 = new Label();
 			mv.visitLabel(l0);
@@ -173,7 +173,7 @@ public class MethodEnhancer implements Opcodes {
 		{
 			// superMethod方法，实现子类的相关方法
 			mv = cw.visitMethod(ACC_PUBLIC, superMethodName, "(" + inParamStr + ")" + outParam, signature, exceptions);// 方法名称
-			//构造事务注解
+			//构造注解
 			{
 				Annotation[] as = method.getAnnotations();
 				for (Annotation a : as) {
