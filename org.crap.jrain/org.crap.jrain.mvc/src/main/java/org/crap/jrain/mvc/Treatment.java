@@ -88,7 +88,10 @@ public abstract class Treatment<TRequest, TResponse> {
 			return;
 		} catch (ClassCastException e) {
 			e.printStackTrace();
-			render.render(new Result(Errors.REQUEST_METHOD_ERROR), request, response);
+			if(e.getStackTrace()[1] != null && e.getStackTrace()[1].getClassName().equals(this.getClass().getSuperclass().getName()))
+				render.render(new Result(Errors.REQUEST_METHOD_ERROR), request, response);
+			else
+				render.render(new DataResult(Errors.EXCEPTION_UNKNOW, new Data(e.getMessage())), request, response);
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -20,6 +20,7 @@ import org.crap.jrain.core.error.LangErrcode;
 public enum Errors  implements LangErrcode {
 	/** 操作成功 */
 	OK(0, "ok"),
+	FAIL(-1, "fail"),
 	/** 未知异常 */
 	EXCEPTION_UNKNOW(-1),
 	REQUEST_METHOD_ERROR(1),
