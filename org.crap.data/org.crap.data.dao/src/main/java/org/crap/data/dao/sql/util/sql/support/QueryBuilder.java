@@ -1,5 +1,7 @@
 package org.crap.data.dao.sql.util.sql.support;
 
+import org.crap.jrain.core.util.StringUtil;
+
 /**
  * @since JDK 1.7
  * 
@@ -36,6 +38,10 @@ public class QueryBuilder {
 		this(sql, null, condition);
 	}
 	
+	public QueryBuilder(Class<?> cls, Profile profile) {
+		this(cls, null, profile);
+	}
+	
 	public QueryBuilder(String sql, Profile profile) {
 		this(sql, null, null, profile);
 	}
@@ -61,6 +67,9 @@ public class QueryBuilder {
 			this.sqlParams = this.condition.getValues();
 	}
 	
+	public QueryBuilder(Class<?> cls, Condition condition, Profile profile) {
+		this("select * from "+StringUtil.toHungarian(cls.getSimpleName()), null, condition, profile);
+	}
 	
 	public String getSql() {
 		String sqlTemp = this.sql;
