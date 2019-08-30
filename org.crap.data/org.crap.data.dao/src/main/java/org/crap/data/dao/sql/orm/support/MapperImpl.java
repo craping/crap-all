@@ -244,7 +244,8 @@ public class MapperImpl implements IMapper {
 	}
 
 	public int count(String paramString, Object[] paramObject) {
-		return ((Number) queryUnique(paramString, paramObject)).intValue();
+		return queryUnique(paramString, paramObject, Integer.class);
+//		return ((Number) queryUnique(paramString, paramObject)).intValue();
 	}
 
 	public SqlSession getSqlSession() {
