@@ -1,5 +1,7 @@
 package org.crap.data.dao.sql.util.sql.support.filter;
 
+import java.util.Collection;
+
 /**
  * @since JDK 1.7
  * 
@@ -49,7 +51,11 @@ public interface SqlConditionFilter extends  SqlFilter{
 	
 	public SqlFilter notBetweenWith(Object value1, Object value2);
 	
-	public SqlFilter in(Object[] values);
+	public SqlFilter in(Object... values);
 	
-	public SqlFilter notIn(Object[] values);
+	public SqlFilter notIn(Object... values);
+	
+	public SqlFilter in(Collection<?> values);
+	
+	public SqlFilter notIn(Collection<?> values);
 }

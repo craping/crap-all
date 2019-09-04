@@ -237,7 +237,7 @@ public class SqlColumn implements SqlConditionFilter {
 		return this.filter;
 	}
 	
-	public SqlFilter in(Object[] values) {
+	public SqlFilter in(Object... values) {
 		StringBuffer sb = new StringBuffer();
 		
 		if(values != null && values.length > 0) {
@@ -255,7 +255,11 @@ public class SqlColumn implements SqlConditionFilter {
 		return this.filter;
 	}
 	
-	public SqlFilter notIn(Object[] values) {
+	public SqlFilter in(java.util.Collection<?> values) {
+		return in(values.toArray());
+	};
+	
+	public SqlFilter notIn(Object... values) {
 		StringBuffer sb = new StringBuffer();
 		
 		if(values != null && values.length > 1) {
@@ -272,7 +276,11 @@ public class SqlColumn implements SqlConditionFilter {
 		this.condition = sb.toString();
 		return this.filter;
 	}
-
+	
+	public SqlFilter notIn(java.util.Collection<?> values) {
+		return notIn(values.toArray());
+	};
+	
 	class ConditionFilter implements SqlFilter {
 		
 		@Override
