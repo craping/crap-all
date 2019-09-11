@@ -322,6 +322,23 @@ public class StringUtil {
         return count;
     }
 	
+	  
+	/**  
+	* @Title: lowerFirst  
+	* @Description: 首字母转小写
+	* @param @param str
+	* @param @return    参数  
+	* @return String    返回类型  
+	* @throws  
+	*/  
+	    
+	public static String lowerFirst(String str) {
+        // 进行字母的ascii编码前移，效率要高于截取字符串进行转换的操作
+        char[] cs=str.toCharArray();
+        cs[0]+=32;
+        return String.valueOf(cs);
+    }
+	
 	/**
 	 * 匈牙利转驼峰命名法
 	 * @author Crap
