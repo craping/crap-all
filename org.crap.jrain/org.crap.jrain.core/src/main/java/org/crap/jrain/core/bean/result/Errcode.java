@@ -26,6 +26,6 @@ public interface Errcode extends Serializable {
 	public String getMsg();
 	
 	default boolean equal(Errcode errcode){
-		return getErrcode() == errcode.getErrcode();
+		return getResult() == errcode.getResult() && getErrcode() == errcode.getErrcode();
 	}
 }
