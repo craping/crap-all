@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.crap.jrain.core.ErrcodeException;
+import org.crap.jrain.core.ErrcodeRuntimeException;
 import org.crap.jrain.core.asm.handler.DataPump;
 import org.crap.jrain.core.bean.result.Errcode;
 import org.crap.jrain.core.bean.result.Result;
@@ -86,7 +87,11 @@ public abstract class Treatment<TRequest, TResponse> {
 			e.printStackTrace();
 			render.render(e.toResult(), request, response);
 			return;
-		} catch (ClassCastException e) {
+		} catch (ErrcodeRuntimeException e) {
+			e.printStackTrace();
+			render.render(e.toResult(), request, response);
+			return;
+		}  catch (ClassCastException e) {
 			e.printStackTrace();
 			if(e.getStackTrace()[1] != null && e.getStackTrace()[1].getClassName().equals(this.getClass().getSuperclass().getName()))
 				render.render(new Result(Errors.REQUEST_METHOD_ERROR), request, response);

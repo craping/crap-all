@@ -2,6 +2,7 @@ package org.crap.jrain.core.bean.result.criteria;
 
 import org.crap.jrain.core.bean.result.Errcode;
 import org.crap.jrain.core.bean.result.Result;
+import org.crap.jrain.core.error.support.Errors;
 
 public class DataResult extends Result {
 
@@ -14,8 +15,12 @@ public class DataResult extends Result {
 	
 	public DataResult() {}
 
-	public DataResult(Errcode errcode) {
-		super(errcode);
+	public DataResult(Object info) {
+		this(Errors.OK, new Data(info));
+	}
+	
+	public DataResult(Object... info) {
+		this(Errors.OK, new Data(info));
 	}
 	
 	public DataResult(Errcode errcode, Data data) {
