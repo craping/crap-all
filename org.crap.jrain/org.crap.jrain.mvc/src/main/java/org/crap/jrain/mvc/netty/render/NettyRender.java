@@ -51,6 +51,8 @@ public abstract class NettyRender extends AbstractRender<FullHttpRequest, Channe
 		if(close || forceClose){
 			future.addListener(ChannelFutureListener.CLOSE);
 		}
+//		if(request.content().isReadable())
+//			ReferenceCountUtil.release(request);
 	}
 	
 	  
