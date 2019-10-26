@@ -32,7 +32,6 @@
 	</properties>
 	<modules>
 		<module>org.crap.jrain</module>
-		<module>org.crap.wxbot</module>
 		<module>org.crap.data</module>
 	</modules>
 </project>
