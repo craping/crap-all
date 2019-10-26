@@ -19,9 +19,10 @@ import org.crap.jrain.core.validate.annotation.BarScreen;
 import org.crap.jrain.core.validate.security.component.Coder;
 import org.crap.jrain.mvc.HttpServer;
 
+import com.alibaba.fastjson.JSONObject;
+
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.FullHttpRequest;
-import net.sf.json.JSONObject;
 
 @Pump("api")
 public class ApiPump extends DataPump<FullHttpRequest, Channel> {

@@ -5,9 +5,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import org.crap.jrain.core.validate.support.Param;
-import org.crap.jrain.core.validate.support.param.StringParam;
 /** 
  * @project Crap
  * 
@@ -21,19 +18,17 @@ import org.crap.jrain.core.validate.support.param.StringParam;
 @Target({ElementType.PARAMETER, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Parameter {
+public @interface StructParam {
 	//参数名称
 	String value() default "";
 	//参数类型
-	Class<? extends Param<?>> type() default StringParam.class;
+	Class<?> type();
 	//参数描述
 	String desc() default "";
 	//是否为必要参数
 	boolean required() default true;
 	//是否可以为空
 	boolean empty() default false;
-	//是否有多个值
-	boolean multi() default false;
 	//默认值
 	String defaultValue() default "";
 	//参数枚举范围
@@ -42,6 +37,4 @@ public @interface Parameter {
 	String min() default "";
 	//参数最小值
 	String max() default "";
-	//其他属性
-	Attribute[] attribute() default {};
 }

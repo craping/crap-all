@@ -1,25 +1,17 @@
 package org.crap.jrain.core.validate.support.param;
 
-import java.util.Map;
-
 import org.crap.jrain.core.bean.result.Errcode;
 import org.crap.jrain.core.validate.exception.ValidationException;
 import org.crap.jrain.core.validate.support.Param;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
 
-public class StructParam extends Param<JSONObject> {
+public class CollectionParam extends Param<JSONArray> {
 	
-	/** 多参数组合验证 */
-	protected Param<?>[] params;
-	
-	protected Class<?> struct;
-	
-	public StructParam() {
+	public CollectionParam() {
 		this.multi = false;
 	}
-	
+
 	@Override
 	protected Errcode validateValue(Object param) throws ValidationException {
 		// TODO Auto-generated method stub
@@ -39,13 +31,8 @@ public class StructParam extends Param<JSONObject> {
 	}
 
 	@Override
-	protected JSONObject cast0(Object param) {
+	protected JSONArray cast0(Object param) {
+		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	public static void main(String[] args) {
-		JSONObject json = JSON.parseObject("{a:1,b:'crap',c:{}}");
-		System.out.println(json.getJSONObject("c").isEmpty());
-		System.out.println(JSON.parseObject(json.toJSONString(), String.class));
 	}
 }

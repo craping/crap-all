@@ -7,24 +7,23 @@ import java.util.Map;
 import org.crap.jrain.core.asm.handler.ASMPump;
 import org.crap.jrain.core.launch.Boot;
 import org.crap.jrain.core.launch.DefaultBoot;
-import org.crap.jrain.core.validate.exception.NoSuchServiceDefinitionException;
 import org.crap.jrain.core.validate.security.component.AES;
 import org.crap.jrain.core.validate.security.component.Coder;
 import org.crap.jrain.core.validate.security.component.CryptoCipher;
 import org.crap.jrain.core.validate.security.component.RSA;
 
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSON;
 
 public class Test {
 	
-	public static void main(String[] args) throws Exception {
+	public static void main2(String[] args) throws Exception {
 		Boot boot = new DefaultBoot(new Config("org.crap.jrain.core"));
 		ASMPump<Map<?, ?>> pump = boot.getHandler("map$test");
 		Map<?, ?> params = new HashMap<>();
 		pump.execute(params);
 		
 		pump = boot.getHandler("json$test");
-		params = JSONObject.fromObject("{}");
+		params = JSON.parseObject("{}");
 		pump.execute(params);
 	}
 	
@@ -45,5 +44,8 @@ public class Test {
 		
 		System.out.println(c.decrypt(base64Ciphertext, keyPair.getPrivate()));
 		
+	}
+	
+	public static void main(String[] args) {
 	}
 }
