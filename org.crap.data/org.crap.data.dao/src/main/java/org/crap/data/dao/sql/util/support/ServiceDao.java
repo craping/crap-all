@@ -240,19 +240,11 @@ public class ServiceDao extends CommonDao implements IServiceDao {
 		try {
 			List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
 			if(totalnumList == null){
-				totalnum = 0;
+				page.setTotalnum(0);
 			}else if(totalnumList.size() == 1){
-				Object[] object = totalnumList.get(0);
-				if(null != object && object.length > 0 && object[0] instanceof Long){
-					totalnum =Integer.parseInt(object[0].toString());
-				}else {
-					List<?> infoAll = super.query(builder.getSql(), builder.getSqlParams());
-					if(null != infoAll && infoAll.size() > 0){
-						totalnum = infoAll.size();
-					}
-				}
+				page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
 			}else{
-				totalnum = totalnumList.size();
+				page.setTotalnum(totalnumList.size());
 			}
 		} catch (Exception e) {
 			List<?> infoAll = super.query(builder.getSql(), builder.getSqlParams());
