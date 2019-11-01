@@ -60,7 +60,7 @@ public class QueryBuilder {
 	
 	public QueryBuilder(String sql, String countSql, Condition condition, Profile profile) {
 		this.sql = sql;
-		this.countSql = countSql==null?sql.replaceFirst("select.*?from", "select count(0) from") : countSql;
+		this.countSql = countSql==null?sql.toLowerCase().replaceFirst("select.*?from", "select count(0) from") : countSql;
 		this.condition = condition;
 		this.profile = profile;
 		if(this.condition!=null)
