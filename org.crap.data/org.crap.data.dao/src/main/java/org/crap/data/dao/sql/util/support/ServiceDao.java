@@ -236,23 +236,16 @@ public class ServiceDao extends CommonDao implements IServiceDao {
 		Integer limit = page.getNum();
 		Integer offset = (page.getPage()-1)*(limit == null? 0 : limit);
 		List<?> info = super.queryEntityList(builder.getSql(), entity, builder.getSqlParams(), offset, limit);
-		Integer totalnum = 0;
-		try {
-			List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
-			if(totalnumList == null){
-				page.setTotalnum(0);
-			}else if(totalnumList.size() == 1){
-				page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
-			}else{
-				page.setTotalnum(totalnumList.size());
-			}
-		} catch (Exception e) {
-			List<?> infoAll = super.query(builder.getSql(), builder.getSqlParams());
-			if(null != infoAll && infoAll.size() > 0){
-				totalnum = infoAll.size();
-			}
+		
+		List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
+		if(totalnumList == null){
+			page.setTotalnum(0);
+		}else if(totalnumList.size() == 1){
+			page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
+		}else{
+			page.setTotalnum(totalnumList.size());
 		}
-		page.setTotalnum(totalnum);
+		
 		dataResult.setData(new Data(info, page));
 		dataResult.setErrcode(Errors.OK);
 		
